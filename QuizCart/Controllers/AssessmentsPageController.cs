@@ -16,6 +16,7 @@ namespace QuizCart.Controllers
             _assessmentService = assessmentService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return RedirectToAction("List");

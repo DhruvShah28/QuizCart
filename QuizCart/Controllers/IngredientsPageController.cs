@@ -6,6 +6,7 @@ namespace QuizCart.Controllers
     public class IngredientsPageController : Controller
     {
         // GET: IngredientsPageController
+
         public ActionResult Index()
         {
             return View();
