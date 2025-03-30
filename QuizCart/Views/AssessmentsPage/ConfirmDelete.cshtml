@@ -1,0 +1,13 @@
+﻿@model QuizCart.Models.AssessmentDto
+@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+<h2>Confirm Delete</h2>
+<p>Are you sure you want to delete the assessment titled <strong>@Model.Title</strong>?</p>
+
+<form asp-action="Delete" method="post" asp-route-id="@Model.AssessmentId">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>

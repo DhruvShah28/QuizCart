@@ -1,0 +1,38 @@
+﻿@model IEnumerable<QuizCart.Models.MemberDto>
+@{
+    ViewData["Title"] = "All Members";
+}
+
+<h2>All Members</h2>
+
+<a class="btn btn-primary mb-3" asp-action="AddMember">Add New Member</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Amount Paid</th>
+            <th>Amount Owed</th>
+            <th>Subjects</th>
+            <th>Assessments</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Name</td>
+                <td>@m.AmountPaid.ToString("C2")</td>
+                <td>@m.AmountOwed.ToString("C2")</td>
+                <td>@m.TotalSubjects</td>
+                <td>@m.TotalAssessments</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@m.MemberId" class="btn btn-sm btn-info">View</a>
+                    <a asp-action="Edit" asp-route-id="@m.MemberId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="ConfirmDelete" asp-route-id="@m.MemberId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

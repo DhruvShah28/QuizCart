@@ -1,0 +1,39 @@
+﻿@model QuizCart.Models.ViewModels.SubjectDetails
+
+@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+<h2>Confirm Delete</h2>
+
+<p>
+    Are you sure you want to delete the subject:
+    <strong>@Model.Subject.Name</strong>?
+</p>
+
+@if (Model.Assessments != null && Model.Assessments.Any())
+{
+    <div class="alert alert-warning">
+        <strong>Warning:</strong> This subject has the following assessments linked. Deleting this subject will also delete them.
+    </div>
+
+    <h5>Assessments:</h5>
+    <ul class="mb-3">
+        @foreach (var assessment in Model.Assessments)
+        {
+            <li>@assessment.Title</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No assessments are currently linked to this subject.</p>
+}
+
+<form asp-action="Delete" asp-route-id="@Model.Subject.SubjectId" method="post">
+    @Html.AntiForgeryToken()
+    <div class="mt-4">
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a asp-action="List" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

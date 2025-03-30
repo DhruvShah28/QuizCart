@@ -1,0 +1,23 @@
+﻿@model QuizCart.Models.UpdateSubjectDto
+@{
+    ViewData["Title"] = "Edit Subject";
+}
+
+<h2>Edit Subject</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="SubjectId" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Details" asp-route-id="@Model.SubjectId" class="btn btn-secondary">Cancel</a>
+</form>

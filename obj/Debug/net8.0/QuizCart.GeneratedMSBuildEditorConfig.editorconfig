@@ -1,0 +1,339 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = QuizCart
+build_property.RootNamespace = QuizCart
+build_property.ProjectDir = C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcQXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/AssessmentsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQXNzZXNzbWVudHNQYWdlXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/AssessmentsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQXNzZXNzbWVudHNQYWdlXENvbmZpcm1EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/AssessmentsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQXNzZXNzbWVudHNQYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/AssessmentsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQXNzZXNzbWVudHNQYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/AssessmentsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQXNzZXNzbWVudHNQYWdlXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/BrainFoodsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQnJhaW5Gb29kc1BhZ2VcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/BrainFoodsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQnJhaW5Gb29kc1BhZ2VcQ29uZmlybURlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/BrainFoodsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQnJhaW5Gb29kc1BhZ2VcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/BrainFoodsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQnJhaW5Gb29kc1BhZ2VcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/BrainFoodsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcQnJhaW5Gb29kc1BhZ2VcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/IngredientsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcSW5ncmVkaWVudHNQYWdlXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/IngredientsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcSW5ncmVkaWVudHNQYWdlXENvbmZpcm1EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/IngredientsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcSW5ncmVkaWVudHNQYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/IngredientsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcSW5ncmVkaWVudHNQYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/IngredientsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcSW5ncmVkaWVudHNQYWdlXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/MembersPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcTWVtYmVyc1BhZ2VcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/MembersPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcTWVtYmVyc1BhZ2VcQ29uZmlybURlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/MembersPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcTWVtYmVyc1BhZ2VcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/MembersPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcTWVtYmVyc1BhZ2VcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/MembersPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcTWVtYmVyc1BhZ2VcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/PurchasesPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcUHVyY2hhc2VzUGFnZVxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/PurchasesPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcUHVyY2hhc2VzUGFnZVxDb25maXJtRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/PurchasesPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcUHVyY2hhc2VzUGFnZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/PurchasesPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcUHVyY2hhc2VzUGFnZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/PurchasesPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcUHVyY2hhc2VzUGFnZVxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/SubjectsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU3ViamVjdHNQYWdlXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/SubjectsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU3ViamVjdHNQYWdlXENvbmZpcm1EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/SubjectsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU3ViamVjdHNQYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/SubjectsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU3ViamVjdHNQYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/SubjectsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU3ViamVjdHNQYWdlXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/AssessmentsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXNzbWVudHNQYWdlXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/AssessmentsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXNzbWVudHNQYWdlXENvbmZpcm1EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/AssessmentsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXNzbWVudHNQYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/AssessmentsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXNzbWVudHNQYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/AssessmentsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXNzbWVudHNQYWdlXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/BrainFoodsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhaW5Gb29kc1BhZ2VcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/BrainFoodsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhaW5Gb29kc1BhZ2VcQ29uZmlybURlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/BrainFoodsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhaW5Gb29kc1BhZ2VcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/BrainFoodsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhaW5Gb29kc1BhZ2VcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/BrainFoodsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhaW5Gb29kc1BhZ2VcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/IngredientsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudHNQYWdlXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/IngredientsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudHNQYWdlXENvbmZpcm1EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/IngredientsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudHNQYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/IngredientsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudHNQYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/IngredientsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5ncmVkaWVudHNQYWdlXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/MembersPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1BhZ2VcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/MembersPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1BhZ2VcQ29uZmlybURlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/MembersPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1BhZ2VcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/MembersPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1BhZ2VcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/MembersPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc1BhZ2VcTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/PurchasesPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VzUGFnZVxBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/PurchasesPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VzUGFnZVxDb25maXJtRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/PurchasesPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VzUGFnZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/PurchasesPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VzUGFnZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/PurchasesPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHVyY2hhc2VzUGFnZVxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/SubjectsPage/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdHNQYWdlXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/SubjectsPage/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdHNQYWdlXENvbmZpcm1EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/SubjectsPage/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdHNQYWdlXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/SubjectsPage/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdHNQYWdlXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/SubjectsPage/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViamVjdHNQYWdlXExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/QuizCart/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UXVpekNhcnRcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-vnwbd3z1tf
+
+[C:/Users/himan/OneDrive/Documents/Humber Web Dev Program/QuizCart/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-cfe1w9rvvu

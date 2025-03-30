@@ -1,0 +1,42 @@
+﻿@model QuizCart.Models.AddAssessmentDto
+@using QuizCart.Models
+@{
+    ViewData["Title"] = "Add Assessment";
+}
+
+<h2>Add New Assessment</h2>
+
+<form asp-action="Add" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateOfAssessment"></label>
+        <input asp-for="DateOfAssessment" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DifficultyLevel"></label>
+        @Html.DropDownListFor(model => model.DifficultyLevel,
+                 new SelectList(Enum.GetValues(typeof(Difficulty))),
+                 "-- Select Difficulty --",
+                 new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SubjectId"></label>
+        <input asp-for="SubjectId" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>

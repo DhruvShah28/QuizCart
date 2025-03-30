@@ -1,0 +1,30 @@
+﻿@model QuizCart.Models.MemberDto
+@{
+    ViewData["Title"] = "Confirm Delete";
+}
+
+<h2>Delete Member</h2>
+
+<div class="alert alert-warning">
+    Are you sure you want to delete the member <strong>@Model.Name</strong>?
+</div>
+
+<dl class="row">
+    <dt class="col-sm-2">Amount Paid</dt>
+    <dd class="col-sm-10">@Model.AmountPaid</dd>
+
+    <dt class="col-sm-2">Amount Owed</dt>
+    <dd class="col-sm-10">@Model.AmountOwed</dd>
+
+    <dt class="col-sm-2">Subjects</dt>
+    <dd class="col-sm-10">@Model.TotalSubjects</dd>
+
+    <dt class="col-sm-2">Assessments</dt>
+    <dd class="col-sm-10">@Model.TotalAssessments</dd>
+</dl>
+
+<form asp-action="DeleteMember" asp-route-id="@Model.MemberId"  method="post">
+    <input type="hidden" name="id" value="@Model.MemberId" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>
