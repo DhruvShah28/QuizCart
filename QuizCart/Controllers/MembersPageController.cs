@@ -25,7 +25,7 @@ namespace QuizCart.Controllers
         }
 
 
-        // Redirect to list
+        [HttpGet]
         public IActionResult Index()
         {
             return RedirectToAction("List");

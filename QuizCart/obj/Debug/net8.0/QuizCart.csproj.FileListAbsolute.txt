@@ -256,6 +256,7 @@ C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\D
 C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\Debug\net8.0\QuizCart.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\Debug\net8.0\QuizCart.RazorAssemblyInfo.cache
 C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\Debug\net8.0\QuizCart.RazorAssemblyInfo.cs
+C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\Debug\net8.0\QuizCart.sourcelink.json
 C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\himan\OneDrive\Documents\Humber Web Dev Program\QuizCart\QuizCart\obj\Debug\net8.0\staticwebassets\msbuild.QuizCart.Microsoft.AspNetCore.StaticWebAssets.props
