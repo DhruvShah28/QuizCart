@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<QuizCart.Models.PurchasesDto>
 @{
+    ViewData["Title"] = "Purchases";
 }
+
+<h2>All Purchases</h2>
+
+<a class="btn btn-primary mb-3" asp-action="Add">Add Purchase</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Purchase ID</th>
+            <th>Date</th>
+            <th>Member</th>
+            <th>Total</th>
+            <th>Ingredients</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.PurchaseId</td>
+                <td>@p.DatePurchased.ToString("yyyy-MM-dd")</td>
+                <td>@p.MemberName</td>
+                <td>$@p.TotalAmount.ToString("0.00")</td>
+                <td>@string.Join(", ", p.IngredientNames)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@p.PurchaseId" class="btn btn-info btn-sm">View</a>
+                    <a asp-action="ConfirmDelete" asp-route-id="@p.PurchaseId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

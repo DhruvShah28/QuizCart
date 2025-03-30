@@ -1,5 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model QuizCart.Models.IngredientDto
 @{
+    ViewData["Title"] = "Ingredient Details";
 }
+
+<h2>@Model.Name</h2>
+
+<p><strong>Benefits:</strong> @Model.Benefits</p>
+<p><strong>Unit Price:</strong> $@Model.UnitPrice.ToString("0.00")</p>
+<p><strong>Total Assessments:</strong> @Model.TotalAssessments</p>
+
+<hr />
+
+@if (Model.AssessmentsUsedIn != null && Model.AssessmentsUsedIn.Any())
+{
+    <h4>Used In Assessments:</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Assessment Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.AssessmentsUsedIn)
+            {
+                <tr>
+                    <td>@item.AssessmentName</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>This ingredient is not linked to any assessments yet.</p>
+}
+
+<a asp-action="Edit" asp-route-id="@Model.IngredientId" class="btn btn-warning">Edit</a>
+<a asp-action="ConfirmDelete" asp-route-id="@Model.IngredientId" class="btn btn-danger">Delete</a>
+<a asp-action="List" class="btn btn-secondary">Back to List</a>

@@ -41,6 +41,8 @@ namespace QuizCart.Models
 
         public string IngredientName { get; set; }
 
+        public float UnitPrice { get; set; }
+
 
     }
     public class UpdateBrainFoodDto

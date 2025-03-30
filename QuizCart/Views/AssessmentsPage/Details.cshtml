@@ -1,17 +1,53 @@
 ﻿@model QuizCart.Models.AssessmentDto
+
 @{
     ViewData["Title"] = "Assessment Details";
 }
 
 <h2>@Model.Title</h2>
+
 <p><strong>Date:</strong> @Model.DateOfAssessment.ToString("yyyy-MM-dd")</p>
 <p><strong>Difficulty:</strong> @Model.DifficultyLevel</p>
 <p><strong>Description:</strong> @Model.Description</p>
 <p><strong>Subject:</strong> @Model.SubjectName</p>
 <p><strong>Members:</strong> @string.Join(", ", Model.MemberNames)</p>
 
+@if (Model.BrainFoods != null && Model.BrainFoods.Any())
+{
+    <hr />
+    <h4>Required BrainFoods</h4>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Ingredient</th>
+                <th>Quantity(in grams)</th>
+                <th>Unit Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bf in Model.BrainFoods)
+            {
+                <tr>
+                    <td>@bf.IngredientName</td>
+                    <td>@bf.Quantity</td>
+                    <td>@bf.UnitPrice.ToString("C2")</td>
+                    <td>
+                        <a asp-controller="BrainFoodsPage" asp-action="Details" asp-route-id="@bf.BrainFoodId" class="btn btn-sm btn-info">View</a>
+                        <a asp-controller="BrainFoodsPage" asp-action="Edit" asp-route-id="@bf.BrainFoodId" class="btn btn-sm btn-warning">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No brain foods assigned to this assessment.</p>
+}
+
 <hr />
 <a asp-action="List" class="btn btn-secondary">Back to List</a>
 <a asp-action="Edit" asp-route-id="@Model.AssessmentId" class="btn btn-success">Edit</a>
 <a asp-action="ConfirmDelete" asp-route-id="@Model.AssessmentId" class="btn btn-danger">Delete</a>
-

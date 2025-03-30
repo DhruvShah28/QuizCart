@@ -39,6 +39,8 @@ namespace QuizCart.Services
             var assessment = await _context.Assessments
                 .Include(a => a.Subject)
                     .ThenInclude(s => s.Members)
+                .Include(a => a.BrainFoods)
+                    .ThenInclude(bf => bf.Ingredient) 
                 .FirstOrDefaultAsync(a => a.AssessmentId == id);
 
             if (assessment == null) return null;
@@ -51,9 +53,17 @@ namespace QuizCart.Services
                 DateOfAssessment = assessment.DateOfAssessment,
                 DifficultyLevel = assessment.DifficultyLevel,
                 SubjectName = assessment.Subject?.Name ?? "Unknown",
-                MemberNames = assessment.Subject?.Members.Select(m => m.Name).ToList() ?? new List<string>()
+                MemberNames = assessment.Subject?.Members.Select(m => m.Name).ToList() ?? new(),
+                BrainFoods = assessment.BrainFoods?.Select(bf => new BrainFoodDto
+                {
+                    BrainFoodId = bf.BrainFoodId,
+                    Quantity = bf.Quantity,
+                    IngredientName = bf.Ingredient?.Name ?? "Unknown",
+                    UnitPrice = bf.Ingredient?.UnitPrice ?? 0f // 
+                }).ToList() ?? new()
             };
         }
+
 
 
         public async Task<ServiceResponse> AddAssessment(AddAssessmentDto dto)

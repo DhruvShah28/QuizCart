@@ -1,5 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model QuizCart.Models.AddBrainFoodDto
 @{
+    ViewData["Title"] = "Add BrainFood";
 }
+
+<h2>Add BrainFood</h2>
+
+<form asp-action="Add" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="Quantity" class="form-label"></label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IngredientId" class="form-label"></label>
+        <select asp-for="IngredientId" asp-items="ViewBag.Ingredients" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AssessmentId" class="form-label"></label>
+        <select asp-for="AssessmentId" asp-items="ViewBag.Assessments" class="form-control"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>

@@ -55,6 +55,8 @@ namespace QuizCart.Models
 
         public List<string> MemberNames { get; set; }
 
+        public List<BrainFoodDto> BrainFoods { get; set; } = new();
+
 
     }
     public class UpdateAssessmentDto

@@ -1,83 +1,127 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using QuizCart.Interfaces;
+using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Controllers
 {
+    [Route("BrainFoodsPage")]
     public class BrainFoodsPageController : Controller
     {
-        // GET: BrainFoodsPageController
-        public ActionResult Index()
+        private readonly IBrainFoodService _brainFoodService;
+        private readonly IIngredientService _ingredientService;
+        private readonly IAssessmentService _assessmentService;
+
+        public BrainFoodsPageController(IBrainFoodService brainFoodService, IIngredientService ingredientService, IAssessmentService assessmentService)
         {
+            _brainFoodService = brainFoodService;
+            _ingredientService = ingredientService;
+            _assessmentService = assessmentService;
+        }
+
+        [HttpGet]
+        public IActionResult Index() => RedirectToAction("List");
+
+        [HttpGet("List")]
+        public async Task<IActionResult> List()
+        {
+            var brainFoods = await _brainFoodService.ListBrainFoods();
+            return View(brainFoods);
+        }
+
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var brainFood = await _brainFoodService.FindBrainFood(id);
+            if (brainFood == null)
+                return View("Error", new ErrorViewModel { Errors = ["BrainFood not found."] });
+
+            return View(brainFood);
+        }
+
+        [HttpGet("Add")]
+        public async Task<IActionResult> Add()
+        {
+            ViewBag.Ingredients = new SelectList(await _ingredientService.ListIngredients(), "IngredientId", "Name");
+            ViewBag.Assessments = new SelectList(await _assessmentService.ListAssessments(), "AssessmentId", "Title");
             return View();
         }
 
-        // GET: BrainFoodsPageController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: BrainFoodsPageController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: BrainFoodsPageController/Create
-        [HttpPost]
+        [HttpPost("Add")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Add(AddBrainFoodDto dto)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                ViewBag.Ingredients = new SelectList(await _ingredientService.ListIngredients(), "IngredientId", "Name");
+                ViewBag.Assessments = new SelectList(await _assessmentService.ListAssessments(), "AssessmentId", "Title");
+                return View(dto);
             }
-            catch
-            {
-                return View();
-            }
+
+            var result = await _brainFoodService.AddBrainFood(dto);
+            if (result.Status != ServiceResponse.ServiceStatus.Created)
+                return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+            return RedirectToAction("List");
         }
 
-        // GET: BrainFoodsPageController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet("Edit/{id}")]
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var brainFood = await _brainFoodService.FindBrainFood(id);
+            if (brainFood == null)
+                return View("Error", new ErrorViewModel { Errors = ["BrainFood not found."] });
+
+            var dto = new UpdateBrainFoodDto
+            {
+                BrainFoodId = brainFood.BrainFoodId,
+                Quantity = brainFood.Quantity,
+                IngredientId = 0, // You may need to extend DTO to return IngredientId
+                AssessmentId = 0
+            };
+
+            ViewBag.Ingredients = new SelectList(await _ingredientService.ListIngredients(), "IngredientId", "Name");
+            ViewBag.Assessments = new SelectList(await _assessmentService.ListAssessments(), "AssessmentId", "Title");
+            return View(dto);
         }
 
-        // POST: BrainFoodsPageController/Edit/5
-        [HttpPost]
+        [HttpPost("Edit/{id}")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, UpdateBrainFoodDto dto)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (id != dto.BrainFoodId)
+                return View("Error", new ErrorViewModel { Errors = ["BrainFood ID mismatch."] });
+
+            var result = await _brainFoodService.UpdateBrainFood(id, dto);
+            if (result.Status == ServiceResponse.ServiceStatus.Error)
+                return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+            return RedirectToAction("Details", new { id });
         }
 
-        // GET: BrainFoodsPageController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet("Delete/{id}")]
+        [Authorize]
+        public async Task<IActionResult> ConfirmDelete(int id)
         {
-            return View();
+            var brainFood = await _brainFoodService.FindBrainFood(id);
+            if (brainFood == null)
+                return View("Error", new ErrorViewModel { Errors = ["BrainFood not found."] });
+
+            return View(brainFood);
         }
 
-        // POST: BrainFoodsPageController/Delete/5
-        [HttpPost]
+        [HttpPost("Delete/{id}")]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var result = await _brainFoodService.DeleteBrainFood(id);
+            if (result.Status == ServiceResponse.ServiceStatus.Deleted)
+                return RedirectToAction("List");
+
+            return View("Error", new ErrorViewModel { Errors = result.Messages });
         }
     }
 }

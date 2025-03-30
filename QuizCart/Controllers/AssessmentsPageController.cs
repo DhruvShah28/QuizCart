@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QuizCart.Interfaces;
 using QuizCart.Models;
 using QuizCart.Models.ViewModels;
@@ -37,8 +38,11 @@ namespace QuizCart.Controllers
             {
                 return View("Error", new ErrorViewModel { Errors = ["Assessment not found."] });
             }
+
             return View(assessment);
         }
+
+
 
         [HttpGet("AddAssessment")]
         public IActionResult Add()
