@@ -1,0 +1,39 @@
+﻿@model QuizCart.Models.UpdateAssessmentDto
+@using QuizCart.Models
+
+@{
+    ViewData["Title"] = "Edit Assessment";
+}
+
+<h2>Edit Assessment</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="AssessmentId" />
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DateOfAssessment"></label>
+        <input asp-for="DateOfAssessment" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DifficultyLevel"></label>
+        @Html.DropDownListFor(model => model.DifficultyLevel,
+                 new SelectList(Enum.GetValues(typeof(Difficulty))),
+                 "-- Select Difficulty --",
+                 new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Details" asp-route-id="@Model.AssessmentId" class="btn btn-secondary">Cancel</a>
+</form>

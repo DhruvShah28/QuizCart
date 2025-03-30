@@ -1,0 +1,134 @@
+﻿@model QuizCart.Models.ViewModels.MemberDetails
+
+@{
+    ViewData["Title"] = "Member Details";
+}
+
+<h2>Member Details</h2>
+<hr />
+
+<div>
+    <p><strong>Member ID:</strong> @Model.Member.MemberId</p>
+    <p><strong>Name:</strong> @Model.Member.Name</p>
+    <p><strong>Amount Paid:</strong> @Model.Member.AmountPaid</p>
+    <p><strong>Amount Owed:</strong> @Model.Member.AmountOwed</p>
+    <p><strong>Total Subjects:</strong> @Model.Member.TotalSubjects</p>
+    <p><strong>Total Assessments:</strong> @Model.Member.TotalAssessments</p>
+</div>
+
+<hr />
+
+
+<h4>Link Subject to Member</h4>
+
+@if (Model.UnlinkedSubjects != null && Model.UnlinkedSubjects.Any())
+{
+    <form asp-action="LinkSubject" method="post">
+        <input type="hidden" name="MemberId" value="@Model.Member.MemberId" />
+        <div class="form-group w-50">
+            <select name="SubjectId" class="form-control">
+                <option disabled selected>-- Select Subject --</option>
+                @foreach (var subject in Model.UnlinkedSubjects)
+                {
+                    <option value="@subject.SubjectId">@subject.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Link Subject</button>
+    </form>
+}
+else
+{
+    <p class="text-muted">All subjects are already linked to this member.</p>
+}
+
+<hr />
+
+
+<h4 class="mt-4">Linked Subjects</h4>
+
+@if (Model.Subjects != null && Model.Subjects.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Subject ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subject in Model.Subjects)
+            {
+                <tr>
+                    <td>@subject.SubjectId</td>
+                    <td>@subject.Name</td>
+                    <td>@subject.Description</td>
+                    <td>
+                        <a asp-controller="SubjectsPage" asp-action="Details" asp-route-id="@subject.SubjectId" class="btn btn-sm btn-info">View</a>
+
+                        <form asp-action="UnlinkSubject" method="post" class="d-inline">
+                            <input type="hidden" name="MemberId" value="@Model.Member.MemberId" />
+                            <input type="hidden" name="SubjectId" value="@subject.SubjectId" />
+                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No subjects linked to this member yet.</p>
+}
+
+<hr />
+
+<h4>Purchases</h4>
+
+@if (Model.Purchases != null && Model.Purchases.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Purchase ID</th>
+                <th>Date</th>
+                <th>Ingredients</th>
+                <th>Total Amount</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Purchases)
+            {
+                <tr>
+                    <td>@p.PurchaseId</td>
+                    <td>@p.DatePurchased.ToString("yyyy-MM-dd")</td>
+                    <td>@string.Join(", ", p.IngredientNames ?? new List<string>())</td>
+                    <td>@p.TotalAmount</td>
+                    <td>
+                        <a asp-controller="PurchasesPage" asp-action="Details" asp-route-id="@p.PurchaseId" class="btn btn-sm btn-info">View</a>
+                        <a asp-controller="PurchasesPage" asp-action="Edit" asp-route-id="@p.PurchaseId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-controller="PurchasesPage" asp-action="ConfirmDelete" asp-route-id="@p.PurchaseId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No purchases found for this member.</p>
+}
+
+<hr />
+
+<div class="mt-4">
+
+    <a asp-action="List" class="btn btn-secondary">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Member.MemberId" class="btn btn-success">Edit</a>
+    <a asp-action="ConfirmDelete" asp-route-id="@Model.Member.MemberId" class="btn btn-danger">Delete</a>
+
+</div>

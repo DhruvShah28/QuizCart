@@ -1,0 +1,1165 @@
+[
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsController",
+    "Method": "AddAssessment",
+    "RelativePath": "api/Assessments/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.AddAssessmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsController",
+    "Method": "DeleteAssessment",
+    "RelativePath": "api/Assessments/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsController",
+    "Method": "FindAssessment",
+    "RelativePath": "api/Assessments/Find/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuizCart.Models.AssessmentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsController",
+    "Method": "ListAssessments",
+    "RelativePath": "api/Assessments/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QuizCart.Models.AssessmentDto, QuizCart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsController",
+    "Method": "UpdateAssessment",
+    "RelativePath": "api/Assessments/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.UpdateAssessmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.BrainFoodsController",
+    "Method": "AddBrainFood",
+    "RelativePath": "api/BrainFoods/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.AddBrainFoodDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.BrainFoodsController",
+    "Method": "DeleteBrainFood",
+    "RelativePath": "api/BrainFoods/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.BrainFoodsController",
+    "Method": "FindBrainFood",
+    "RelativePath": "api/BrainFoods/Find/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuizCart.Models.BrainFoodDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.BrainFoodsController",
+    "Method": "ListBrainFoods",
+    "RelativePath": "api/BrainFoods/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QuizCart.Models.BrainFoodDto, QuizCart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.BrainFoodsController",
+    "Method": "UpdateBrainFood",
+    "RelativePath": "api/BrainFoods/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.UpdateBrainFoodDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.IngredientsController",
+    "Method": "AddIngredient",
+    "RelativePath": "api/Ingredients/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.AddIngredientDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.IngredientsController",
+    "Method": "DeleteIngredient",
+    "RelativePath": "api/Ingredients/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.IngredientsController",
+    "Method": "FindIngredient",
+    "RelativePath": "api/Ingredients/Find/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuizCart.Models.IngredientDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.IngredientsController",
+    "Method": "ListIngredients",
+    "RelativePath": "api/Ingredients/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QuizCart.Models.IngredientDto, QuizCart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.IngredientsController",
+    "Method": "UpdateIngredient",
+    "RelativePath": "api/Ingredients/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.UpdateIngredientDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersController",
+    "Method": "AddMember",
+    "RelativePath": "api/Members/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.AddMemberDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersController",
+    "Method": "DeleteMember",
+    "RelativePath": "api/Members/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersController",
+    "Method": "FindMember",
+    "RelativePath": "api/Members/Find/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuizCart.Models.MemberDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersController",
+    "Method": "LinkSubject",
+    "RelativePath": "api/Members/LinkSubject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.LinkSubjectDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersController",
+    "Method": "ListMembers",
+    "RelativePath": "api/Members/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QuizCart.Models.MemberDto, QuizCart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersController",
+    "Method": "UnlinkSubject",
+    "RelativePath": "api/Members/UnlinkSubject",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.LinkSubjectDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersController",
+    "Method": "UpdateMember",
+    "RelativePath": "api/Members/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.UpdateMemberDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.PurchasesController",
+    "Method": "AddPurchase",
+    "RelativePath": "api/Purchases/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.AddPurchasesDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.PurchasesController",
+    "Method": "DeletePurchase",
+    "RelativePath": "api/Purchases/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.PurchasesController",
+    "Method": "FindPurchase",
+    "RelativePath": "api/Purchases/Find/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuizCart.Models.PurchasesDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.PurchasesController",
+    "Method": "LinkBrainFood",
+    "RelativePath": "api/Purchases/LinkBrainFood",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.LinkBrainFoodDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.PurchasesController",
+    "Method": "ListPurchases",
+    "RelativePath": "api/Purchases/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QuizCart.Models.PurchasesDto, QuizCart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.PurchasesController",
+    "Method": "UnlinkBrainFood",
+    "RelativePath": "api/Purchases/UnlinkBrainFood",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.LinkBrainFoodDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.PurchasesController",
+    "Method": "UpdatePurchase",
+    "RelativePath": "api/Purchases/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.UpdatePurchasesDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsController",
+    "Method": "AddSubject",
+    "RelativePath": "api/Subjects/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.AddSubjectDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsController",
+    "Method": "DeleteSubject",
+    "RelativePath": "api/Subjects/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsController",
+    "Method": "FindSubject",
+    "RelativePath": "api/Subjects/Find/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QuizCart.Models.SubjectDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsController",
+    "Method": "ListSubjects",
+    "RelativePath": "api/Subjects/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QuizCart.Models.SubjectDto, QuizCart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsController",
+    "Method": "UpdateSubject",
+    "RelativePath": "api/Subjects/Update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "QuizCart.Models.UpdateSubjectDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Index",
+    "RelativePath": "AssessmentsPage",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Add",
+    "RelativePath": "AssessmentsPage/AddAssessment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Add",
+    "RelativePath": "AssessmentsPage/AddAssessment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DateOfAssessment",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "DifficultyLevel",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubjectId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Details",
+    "RelativePath": "AssessmentsPage/AssessmentDetails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "ConfirmDelete",
+    "RelativePath": "AssessmentsPage/DeleteAssessment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Delete",
+    "RelativePath": "AssessmentsPage/DeleteAssessment/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Edit",
+    "RelativePath": "AssessmentsPage/EditAssessment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Edit",
+    "RelativePath": "AssessmentsPage/EditAssessment/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "AssessmentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DateOfAssessment",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "DifficultyLevel",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "List",
+    "RelativePath": "AssessmentsPage/ListAssessments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "Index",
+    "RelativePath": "MembersPage",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "Add",
+    "RelativePath": "MembersPage/AddMember",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "Add",
+    "RelativePath": "MembersPage/AddMember",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "ConfirmDelete",
+    "RelativePath": "MembersPage/DeleteMember/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "Delete",
+    "RelativePath": "MembersPage/DeleteMember/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "Edit",
+    "RelativePath": "MembersPage/EditMember/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "Edit",
+    "RelativePath": "MembersPage/EditMember/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "MemberId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "LinkSubject",
+    "RelativePath": "MembersPage/LinkSubject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "MemberId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubjectId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "List",
+    "RelativePath": "MembersPage/ListMembers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "Details",
+    "RelativePath": "MembersPage/MemberDetails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.MembersPageController",
+    "Method": "UnlinkSubject",
+    "RelativePath": "MembersPage/UnlinkSubject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "MemberId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubjectId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "Index",
+    "RelativePath": "SubjectsPage",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "Add",
+    "RelativePath": "SubjectsPage/AddSubject",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "Add",
+    "RelativePath": "SubjectsPage/AddSubject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "ConfirmDelete",
+    "RelativePath": "SubjectsPage/DeleteSubject/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "Delete",
+    "RelativePath": "SubjectsPage/DeleteSubject/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "Details",
+    "RelativePath": "SubjectsPage/Details/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "Edit",
+    "RelativePath": "SubjectsPage/EditSubject/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "Edit",
+    "RelativePath": "SubjectsPage/EditSubject/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "SubjectId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.SubjectsPageController",
+    "Method": "List",
+    "RelativePath": "SubjectsPage/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

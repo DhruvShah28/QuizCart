@@ -1,0 +1,17 @@
+﻿@model QuizCart.Models.AssessmentDto
+@{
+    ViewData["Title"] = "Assessment Details";
+}
+
+<h2>@Model.Title</h2>
+<p><strong>Date:</strong> @Model.DateOfAssessment.ToString("yyyy-MM-dd")</p>
+<p><strong>Difficulty:</strong> @Model.DifficultyLevel</p>
+<p><strong>Description:</strong> @Model.Description</p>
+<p><strong>Subject:</strong> @Model.SubjectName</p>
+<p><strong>Members:</strong> @string.Join(", ", Model.MemberNames)</p>
+
+<hr />
+<a asp-action="List" class="btn btn-secondary">Back to List</a>
+<a asp-action="Edit" asp-route-id="@Model.AssessmentId" class="btn btn-success">Edit</a>
+<a asp-action="ConfirmDelete" asp-route-id="@Model.AssessmentId" class="btn btn-danger">Delete</a>
+

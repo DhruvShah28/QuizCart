@@ -1,0 +1,58 @@
+﻿@model QuizCart.Models.ViewModels.SubjectDetails
+@{
+    ViewData["Title"] = "Subject Details";
+}
+
+<h2>Subject Details</h2>
+<hr />
+
+<p><strong>ID:</strong> @Model.Subject.SubjectId</p>
+<p><strong>Name:</strong> @Model.Subject.Name</p>
+<p><strong>Description:</strong> @Model.Subject.Description</p>
+<p><strong>Total Assessments:</strong> @Model.Subject.TotalAssessments</p>
+<p><strong>Total Members:</strong> @Model.Subject.TotalMembers</p>
+
+<hr />
+<h4>Assessments</h4>
+
+@if (Model.Assessments != null && Model.Assessments.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Assessment ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Difficulty</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model.Assessments)
+            {
+                <tr>
+                    <td>@a.AssessmentId</td>
+                    <td>@a.Title</td>
+                    <td>@a.Description</td>
+                    <td>@a.DateOfAssessment.ToString("yyyy-MM-dd")</td>
+                    <td class="text-capitalize">@a.DifficultyLevel.ToString()</td>
+                    <td>
+                        <a asp-controller="AssessmentsPage" asp-action="Details" asp-route-id="@a.AssessmentId" class="btn btn-sm btn-info">View</a>
+                        <a asp-controller="AssessmentsPage" asp-action="Edit" asp-route-id="@a.AssessmentId" class="btn btn-sm btn-warning">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No assessments found for this subject.</p>
+}
+
+<hr />
+<a asp-action="List" class="btn btn-secondary">Back to List</a>
+<a asp-action="Edit" asp-route-id="@Model.Subject.SubjectId" class="btn btn-success">Edit Subject</a>
+<a asp-action="ConfirmDelete" asp-route-id="@Model.Subject.SubjectId" class="btn btn-danger">Delete</a>
+

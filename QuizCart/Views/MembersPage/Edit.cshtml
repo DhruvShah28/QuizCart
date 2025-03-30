@@ -1,0 +1,30 @@
+﻿@model QuizCart.Models.UpdateMemberDto
+
+@{
+    ViewData["Title"] = "Edit Member";
+}
+
+<h2>Edit Member</h2>
+
+<form asp-action="EditMember" asp-route-id="@Model.MemberId" method="post">
+    <input type="hidden" asp-for="MemberId" />
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save Changes</button>
+    <a asp-action="List" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
