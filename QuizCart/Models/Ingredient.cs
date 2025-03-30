@@ -32,10 +32,13 @@ namespace QuizCart.Models
 
         public int TotalAssessments { get; set; }
 
+        public List<BrainFoodDto> AssessmentsUsedIn { get; set; } = new();
+
+
     }
 
 
-public class UpdateIngredientDto
+    public class UpdateIngredientDto
 {
     public int IngredientId { get; set; }
 

@@ -38,7 +38,7 @@ namespace QuizCart.Services
         {
             var ingredient = await _context.Ingredients
                 .Include(i => i.BrainFoods)
-                    .ThenInclude(bf => bf.Assessment)
+                .ThenInclude(bf => bf.Assessment)
                 .FirstOrDefaultAsync(i => i.IngredientId == id);
 
             if (ingredient == null) return null;
@@ -52,9 +52,15 @@ namespace QuizCart.Services
                 TotalAssessments = ingredient.BrainFoods
                     .Select(bf => bf.AssessmentId)
                     .Distinct()
-                    .Count()
+                    .Count(),
+                AssessmentsUsedIn = ingredient.BrainFoods.Select(bf => new BrainFoodDto
+                {
+                    AssessmentName = bf.Assessment.Title,
+                    Quantity = bf.Quantity
+                }).ToList()
             };
         }
+
 
         public async Task<ServiceResponse> AddIngredient(AddIngredientDto dto)
         {

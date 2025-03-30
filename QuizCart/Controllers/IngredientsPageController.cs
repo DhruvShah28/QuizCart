@@ -1,84 +1,119 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using QuizCart.Interfaces;
+using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Controllers
 {
+    [Route("IngredientsPage")]
     public class IngredientsPageController : Controller
     {
-        // GET: IngredientsPageController
+        private readonly IIngredientService _ingredientService;
 
-        public ActionResult Index()
+        public IngredientsPageController(IIngredientService ingredientService)
+        {
+            _ingredientService = ingredientService;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return RedirectToAction("List");
+        }
+
+        [HttpGet("List")]
+        public async Task<IActionResult> List()
+        {
+            var ingredients = await _ingredientService.ListIngredients();
+            return View(ingredients);
+        }
+
+        [HttpGet("Details/{id}")]
+        public async Task<IActionResult> Details(int id)
+        {
+            var ingredient = await _ingredientService.FindIngredient(id);
+            if (ingredient == null)
+                return View("Error", new ErrorViewModel { Errors = ["Ingredient not found."] });
+
+            return View(ingredient);
+        }
+
+        [HttpGet("AddIngredient")]
+        public IActionResult Add()
         {
             return View();
         }
 
-        // GET: IngredientsPageController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: IngredientsPageController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: IngredientsPageController/Create
-        [HttpPost]
+        [HttpPost("AddIngredient")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Add(AddIngredientDto dto)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (!ModelState.IsValid)
+                return View(dto);
+
+            var result = await _ingredientService.AddIngredient(dto);
+            if (result.Status == ServiceResponse.ServiceStatus.Error)
+                return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+            return RedirectToAction("List");
         }
 
-        // GET: IngredientsPageController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet("EditIngredient/{id}")]
+        [Authorize]
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var ingredient = await _ingredientService.FindIngredient(id);
+            if (ingredient == null)
+                return View("Error", new ErrorViewModel { Errors = ["Ingredient not found."] });
+
+            var dto = new UpdateIngredientDto
+            {
+                IngredientId = ingredient.IngredientId,
+                Name = ingredient.Name,
+                Benefits = ingredient.Benefits,
+                UnitPrice = ingredient.UnitPrice
+            };
+
+            return View(dto);
         }
 
-        // POST: IngredientsPageController/Edit/5
-        [HttpPost]
+        [HttpPost("EditIngredient/{id}")]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, UpdateIngredientDto dto)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (id != dto.IngredientId)
+                return View("Error", new ErrorViewModel { Errors = ["Ingredient ID mismatch."] });
+
+            var result = await _ingredientService.UpdateIngredient(id, dto);
+            if (result.Status == ServiceResponse.ServiceStatus.Error)
+                return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+            return RedirectToAction("Details", new { id });
         }
 
-        // GET: IngredientsPageController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet("DeleteIngredient/{id}")]
+        [Authorize]
+        public async Task<IActionResult> ConfirmDelete(int id)
         {
-            return View();
+            var ingredient = await _ingredientService.FindIngredient(id);
+            if (ingredient == null)
+                return View("Error", new ErrorViewModel { Errors = ["Ingredient not found."] });
+
+            return View(ingredient);
         }
 
-        // POST: IngredientsPageController/Delete/5
-        [HttpPost]
+        [HttpPost("DeleteIngredient/{id}")]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var result = await _ingredientService.DeleteIngredient(id);
+            if (result.Status == ServiceResponse.ServiceStatus.Deleted)
+                return RedirectToAction("List");
+
+            return View("Error", new ErrorViewModel { Errors = result.Messages });
         }
     }
 }

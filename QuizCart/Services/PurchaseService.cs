@@ -246,6 +246,54 @@ namespace QuizCart.Services
                 IngredientNames = p.BrainFoods.Select(bf => bf.Ingredient.Name).ToList()
             }).ToList();
         }
+        public async Task<ServiceResponse> AddPurchaseWithBrainFood(AddPurchasesDto dto, BrainFood brainFood)
+        {
+            var response = new ServiceResponse();
+
+            try
+            {
+                var member = await _context.Members.FindAsync(dto.MemberId);
+                if (member == null)
+                {
+                    response.Status = ServiceResponse.ServiceStatus.NotFound;
+                    response.Messages.Add("Member not found.");
+                    return response;
+                }
+
+                var ingredient = await _context.Ingredients.FindAsync(brainFood.IngredientId);
+                if (ingredient == null)
+                {
+                    response.Status = ServiceResponse.ServiceStatus.NotFound;
+                    response.Messages.Add("Ingredient not found.");
+                    return response;
+                }
+
+                brainFood.Ingredient = ingredient;
+
+                var purchase = new Purchase
+                {
+                    DatePurchased = dto.DatePurchased,
+                    MemberId = dto.MemberId,
+                    BrainFoods = new List<BrainFood> { brainFood }
+                };
+
+                _context.Purchases.Add(purchase);
+                await _context.SaveChangesAsync();
+
+                response.Status = ServiceResponse.ServiceStatus.Created;
+                response.CreatedId = purchase.PurchaseId;
+            }
+            catch (Exception ex)
+            {
+                response.Status = ServiceResponse.ServiceStatus.Error;
+                response.Messages.Add("Error adding purchase.");
+                response.Messages.Add(ex.Message);
+                if (ex.InnerException != null)
+                    response.Messages.Add(ex.InnerException.Message);
+            }
+
+            return response;
+        }
 
 
     }

@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<QuizCart.Models.BrainFoodDto>
 @{
+    ViewData["Title"] = "BrainFoods";
 }
+
+<h2>BrainFoods</h2>
+<a asp-action="Add" class="btn btn-primary mb-3">Add BrainFood</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ingredient</th>
+            <th>Assessment</th>
+            <th>Quantity(in grams)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bf in Model)
+        {
+            <tr>
+                <td>@bf.IngredientName</td>
+                <td>@bf.AssessmentName</td>
+                <td>@bf.Quantity</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@bf.BrainFoodId" class="btn btn-info btn-sm">View</a>
+                    <a asp-action="Edit" asp-route-id="@bf.BrainFoodId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="ConfirmDelete" asp-route-id="@bf.BrainFoodId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

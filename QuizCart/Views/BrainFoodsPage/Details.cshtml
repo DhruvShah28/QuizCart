@@ -1,5 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model QuizCart.Models.BrainFoodDto
 @{
+    ViewData["Title"] = "BrainFood Details";
 }
+
+<h2>BrainFood Details</h2>
+
+<div class="mb-3">
+    <p><strong>Ingredient:</strong> @Model.IngredientName</p>
+    <p><strong>Assessment:</strong> @Model.AssessmentName</p>
+    <p><strong>Quantity:</strong> @Model.Quantity</p>
+</div>
+
+<a asp-action="List" class="btn btn-secondary">Back to List</a>
+<a asp-action="Edit" asp-route-id="@Model.BrainFoodId" class="btn btn-success">Edit</a>
+<a asp-action="ConfirmDelete" asp-route-id="@Model.BrainFoodId" class="btn btn-danger">Delete</a>
