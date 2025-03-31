@@ -1,18 +1,40 @@
 ﻿@model QuizCart.Models.PurchasesDto
-
 @{
     ViewData["Title"] = "Purchase Details";
 }
 
 <h2>Purchase Details</h2>
 
-<hr />
 <p><strong>Purchase ID:</strong> @Model.PurchaseId</p>
-<p><strong>Date:</strong> @Model.DatePurchased.ToString("yyyy-MM-dd")</p>
-<p><strong>Member:</strong> @Model.MemberName</p>
-<p><strong>Total Amount:</strong> $@Model.TotalAmount.ToString("0.00")</p>
-<p><strong>Ingredients:</strong> @string.Join(", ", Model.IngredientNames)</p>
+<p><strong>Date Purchased:</strong> @Model.DatePurchased.ToString("yyyy-MM-dd")</p>
 
-<hr />
+<h4>Items</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Member</th>
+            <th>Ingredient</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+                <tr>
+                    <td>@Model.MemberName</td>
+                    <td>@item.IngredientName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice.ToString("C2")</td>
+                    <td>@item.Total.ToString("C2")</td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+<p><strong>Grand Total:</strong> <span class="fw-bold">@Model.TotalAmount.ToString("C2")</span></p>
+
 <a asp-action="List" class="btn btn-secondary">Back to List</a>
+<a asp-action="Edit" asp-route-id="@Model.PurchaseId" class="btn btn-warning">Edit</a>
 <a asp-action="ConfirmDelete" asp-route-id="@Model.PurchaseId" class="btn btn-danger">Delete</a>

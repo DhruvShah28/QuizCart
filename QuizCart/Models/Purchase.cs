@@ -36,6 +36,8 @@ namespace QuizCart.Models
 
         public List<string>? IngredientNames { get; set; }
 
+        public List<PurchaseItemDto> Items { get; set; } = new();
+
     }
 
 
@@ -61,5 +63,14 @@ namespace QuizCart.Models
         public List<int> BrainFoodIds { get; set; } = new();
     }
 
+
+    public class PurchaseItemDto
+    {
+        public string IngredientName { get; set; }
+        public int Quantity { get; set; }
+        public float UnitPrice { get; set; }
+
+        public float Total => Quantity * UnitPrice;
+    }
 
 }

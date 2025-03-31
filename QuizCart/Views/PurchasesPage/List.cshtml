@@ -1,35 +1,33 @@
 ﻿@model IEnumerable<QuizCart.Models.PurchasesDto>
+
 @{
-    ViewData["Title"] = "Purchases";
+    ViewData["Title"] = "Purchases List";
 }
 
-<h2>All Purchases</h2>
+<h2>Purchases</h2>
 
-<a class="btn btn-primary mb-3" asp-action="Add">Add Purchase</a>
+<a asp-action="Add" class="btn btn-primary mb-3">Add New Purchase</a>
 
-<table class="table table-striped">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Purchase ID</th>
-            <th>Date</th>
+            <th>Purchase Date</th>
             <th>Member</th>
-            <th>Total</th>
-            <th>Ingredients</th>
+            <th>Total Amount</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var p in Model)
+        @foreach (var purchase in Model)
         {
             <tr>
-                <td>@p.PurchaseId</td>
-                <td>@p.DatePurchased.ToString("yyyy-MM-dd")</td>
-                <td>@p.MemberName</td>
-                <td>$@p.TotalAmount.ToString("0.00")</td>
-                <td>@string.Join(", ", p.IngredientNames)</td>
+                <td>@purchase.DatePurchased</td>
+                <td>@purchase.MemberName</td>
+                <td>@purchase.TotalAmount.ToString("C2")</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@p.PurchaseId" class="btn btn-info btn-sm">View</a>
-                    <a asp-action="ConfirmDelete" asp-route-id="@p.PurchaseId" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="Details" asp-route-id="@purchase.PurchaseId" class="btn btn-info btn-sm">View Details</a>
+                    <a asp-action="Edit" asp-route-id="@purchase.PurchaseId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="ConfirmDelete" asp-route-id="@purchase.PurchaseId" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         }

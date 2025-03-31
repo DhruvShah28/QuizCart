@@ -12,8 +12,10 @@ namespace QuizCart.Interfaces
         Task<ServiceResponse> LinkBrainFood(LinkBrainFoodDto dto);
         Task<ServiceResponse> UnlinkBrainFood(LinkBrainFoodDto dto);
         Task<IEnumerable<PurchasesDto>> ListPurchasesByMemberId(int memberId);
-
+        Task<ServiceResponse> UpdatePurchaseWithBrainFood(UpdatePurchasesDto dto, BrainFood updatedBrainFood);
         Task<ServiceResponse> AddPurchaseWithBrainFood(AddPurchasesDto dto, BrainFood brainFood);
+        Task<Purchase?> FindPurchaseForEdit(int id);
+
 
 
     }

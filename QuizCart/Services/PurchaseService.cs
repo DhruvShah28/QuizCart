@@ -48,9 +48,15 @@ namespace QuizCart.Services
                 DatePurchased = p.DatePurchased,
                 MemberName = p.Member.Name,
                 TotalAmount = p.BrainFoods.Sum(bf => bf.Quantity * bf.Ingredient.UnitPrice),
-                IngredientNames = p.BrainFoods.Select(bf => bf.Ingredient.Name).Distinct().ToList()
+                Items = p.BrainFoods.Select(bf => new PurchaseItemDto
+                {
+                    IngredientName = bf.Ingredient.Name,
+                    Quantity = bf.Quantity,
+                    UnitPrice = bf.Ingredient.UnitPrice
+                }).ToList()
             };
         }
+
 
         public async Task<ServiceResponse> AddPurchase(AddPurchasesDto dto)
         {
@@ -293,6 +299,76 @@ namespace QuizCart.Services
             }
 
             return response;
+        }
+
+
+        public async Task<ServiceResponse> UpdatePurchaseWithBrainFood(UpdatePurchasesDto dto, BrainFood updatedBrainFood)
+        {
+            var response = new ServiceResponse();
+
+            try
+            {
+                var purchase = await _context.Purchases
+                    .Include(p => p.BrainFoods)
+                    .FirstOrDefaultAsync(p => p.PurchaseId == dto.PurchaseId);
+
+                if (purchase == null)
+                {
+                    response.Status = ServiceResponse.ServiceStatus.NotFound;
+                    response.Messages.Add("Purchase not found.");
+                    return response;
+                }
+
+                // Clear existing BrainFoods if needed (or selectively update)
+                purchase.BrainFoods.Clear();
+
+                // Optional: Check for valid ingredient and assessment
+                var ingredientExists = await _context.Ingredients.AnyAsync(i => i.IngredientId == updatedBrainFood.IngredientId);
+                var assessmentExists = await _context.Assessments.AnyAsync(a => a.AssessmentId == updatedBrainFood.AssessmentId);
+
+                if (!ingredientExists || !assessmentExists)
+                {
+                    response.Status = ServiceResponse.ServiceStatus.NotFound;
+                    response.Messages.Add("Ingredient or Assessment not found.");
+                    return response;
+                }
+
+                // Attach brain food manually
+                var newBrainFood = new BrainFood
+                {
+                    Quantity = updatedBrainFood.Quantity,
+                    IngredientId = updatedBrainFood.IngredientId,
+                    AssessmentId = updatedBrainFood.AssessmentId
+                };
+
+                _context.BrainFoods.Add(newBrainFood);
+                await _context.SaveChangesAsync(); // Ensure brain food gets ID
+
+                purchase.DatePurchased = dto.DatePurchased;
+                purchase.BrainFoods.Add(newBrainFood);
+
+                await _context.SaveChangesAsync();
+
+                response.Status = ServiceResponse.ServiceStatus.Updated;
+            }
+            catch (Exception ex)
+            {
+                response.Status = ServiceResponse.ServiceStatus.Error;
+                response.Messages.Add("Error updating purchase.");
+                response.Messages.Add(ex.Message);
+                if (ex.InnerException != null)
+                    response.Messages.Add(ex.InnerException.Message);
+            }
+
+            return response;
+        }
+
+
+        public async Task<Purchase?> FindPurchaseForEdit(int id)
+        {
+            return await _context.Purchases
+                .Include(p => p.BrainFoods)
+                .FirstOrDefaultAsync(p => p.PurchaseId == id);
         }
 
 

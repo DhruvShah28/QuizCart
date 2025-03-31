@@ -4,44 +4,44 @@
     ViewData["Title"] = "Add Purchase";
 }
 
-<h2>Add New Purchase</h2>
+<h2>Add Purchase</h2>
 
 <form asp-action="Add" method="post">
     @Html.AntiForgeryToken()
 
-    <div class="form-group mb-3">
+    <div class="form-group">
         <label asp-for="DatePurchased" class="form-label"></label>
         <input asp-for="DatePurchased" type="date" class="form-control" />
         <span asp-validation-for="DatePurchased" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="MemberId" class="form-label">Member</label>
+    <div class="form-group">
+        <label asp-for="MemberId">Member</label>
         <select asp-for="MemberId" asp-items="Model.Members" class="form-control">
-            <option disabled selected value="">-- Select Member --</option>
+            <option value="">-- Select Member --</option>
         </select>
         <span asp-validation-for="MemberId" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="IngredientId" class="form-label">Ingredient</label>
-        <select asp-for="IngredientId" asp-items="Model.Ingredients" class="form-control">
-            <option disabled selected value="">-- Select Ingredient --</option>
-        </select>
-        <span asp-validation-for="IngredientId" class="text-danger"></span>
-    </div>
-
-    <div class="form-group mb-3">
-        <label asp-for="AssessmentId" class="form-label">Assessment</label>
+    <div class="form-group">
+        <label asp-for="AssessmentId">Assessment</label>
         <select asp-for="AssessmentId" asp-items="Model.Assessments" class="form-control">
-            <option disabled selected value="">-- Select Assessment --</option>
+            <option value="">-- Select Assessment --</option>
         </select>
         <span asp-validation-for="AssessmentId" class="text-danger"></span>
     </div>
 
-    <div class="form-group mb-3">
-        <label asp-for="Quantity" class="form-label">Quantity</label>
-        <input asp-for="Quantity" class="form-control" type="number" min="1" />
+    <div class="form-group">
+        <label asp-for="IngredientId">Ingredient</label>
+        <select asp-for="IngredientId" asp-items="Model.Ingredients" class="form-control">
+            <option value="">-- Select Ingredient --</option>
+        </select>
+        <span asp-validation-for="IngredientId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Quantity">Quantity</label>
+        <input asp-for="Quantity" type="number" class="form-control" min="1" />
         <span asp-validation-for="Quantity" class="text-danger"></span>
     </div>
 

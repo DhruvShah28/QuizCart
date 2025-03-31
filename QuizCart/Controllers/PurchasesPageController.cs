@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using QuizCart.Interfaces;
 using QuizCart.Models;
 using QuizCart.Models.ViewModels;
@@ -14,15 +12,18 @@ namespace QuizCart.Controllers
     {
         private readonly IPurchaseService _purchaseService;
         private readonly IMemberService _memberService;
-        private readonly IIngredientService _ingredientService;
+        private readonly IBrainFoodService _brainFoodService;
         private readonly IAssessmentService _assessmentService;
+        private readonly IIngredientService _ingredientService;
 
-        public PurchasesPageController(IAssessmentService assessmentService, IPurchaseService purchaseService,  IMemberService memberService, IIngredientService ingredientService)
+
+        public PurchasesPageController(IIngredientService ingredientService, IAssessmentService assessmentService, IPurchaseService purchaseService, IMemberService memberService, IBrainFoodService brainFoodService)
         {
             _purchaseService = purchaseService;
-            _ingredientService = ingredientService;
             _memberService = memberService;
+            _brainFoodService = brainFoodService;
             _assessmentService = assessmentService;
+            _ingredientService = ingredientService;
         }
 
         [HttpGet]
@@ -50,15 +51,16 @@ namespace QuizCart.Controllers
         {
             var vm = new AddPurchaseViewModel
             {
+                DatePurchased = DateOnly.FromDateTime(DateTime.Today),
                 Members = (await _memberService.ListMembers())
-                            .Select(m => new SelectListItem { Text = m.Name, Value = m.MemberId.ToString() })
-                            .ToList(),
-                Ingredients = (await _ingredientService.ListIngredients())
-                            .Select(i => new SelectListItem { Text = i.Name, Value = i.IngredientId.ToString() })
-                            .ToList(),
+                    .Select(m => new SelectListItem { Text = m.Name, Value = m.MemberId.ToString() })
+                    .ToList(),
                 Assessments = (await _assessmentService.ListAssessments())
-                            .Select(a => new SelectListItem { Text = a.Title, Value = a.AssessmentId.ToString() })
-                            .ToList()
+                    .Select(a => new SelectListItem { Text = a.Title, Value = a.AssessmentId.ToString() })
+                    .ToList(),
+                Ingredients = (await _ingredientService.ListIngredients())
+                    .Select(i => new SelectListItem { Text = i.Name, Value = i.IngredientId.ToString() })
+                    .ToList()
             };
 
             return View(vm);
@@ -71,64 +73,126 @@ namespace QuizCart.Controllers
         {
             if (!ModelState.IsValid)
             {
+                // repopulate dropdowns
                 vm.Members = (await _memberService.ListMembers())
-                            .Select(m => new SelectListItem { Text = m.Name, Value = m.MemberId.ToString() })
-                            .ToList();
-
-                vm.Ingredients = (await _ingredientService.ListIngredients())
-                            .Select(i => new SelectListItem { Text = i.Name, Value = i.IngredientId.ToString() })
-                            .ToList();
-
+                    .Select(m => new SelectListItem { Text = m.Name, Value = m.MemberId.ToString() })
+                    .ToList();
                 vm.Assessments = (await _assessmentService.ListAssessments())
-                            .Select(a => new SelectListItem { Text = a.Title, Value = a.AssessmentId.ToString() })
-                            .ToList();
+                    .Select(a => new SelectListItem { Text = a.Title, Value = a.AssessmentId.ToString() })
+                    .ToList();
+                vm.Ingredients = (await _ingredientService.ListIngredients())
+                    .Select(i => new SelectListItem { Text = i.Name, Value = i.IngredientId.ToString() })
+                    .ToList();
 
-                return View(vm); 
+                return View(vm);
             }
 
-            try
+            // create brain food from assessment, ingredient, and quantity
+            var brainFood = new BrainFood
             {
-                var dto = new AddPurchasesDto
-                {
-                    MemberId = vm.MemberId,
-                    DatePurchased = vm.DatePurchased,
-                    BrainFoodIds = new List<int>() 
-                };
+                AssessmentId = vm.AssessmentId,
+                IngredientId = vm.IngredientId,
+                Quantity = vm.Quantity
+            };
 
-                var brainFood = new BrainFood
-                {
-                    IngredientId = vm.IngredientId,
-                    AssessmentId = vm.AssessmentId, 
-                    Quantity = vm.Quantity
-                };
-
-                var result = await _purchaseService.AddPurchaseWithBrainFood(dto, brainFood);
-
-                if (result.Status != ServiceResponse.ServiceStatus.Created)
-                {
-                    return View("Error", new ErrorViewModel { Errors = result.Messages });
-                }
-
-                return RedirectToAction("List");
-            }
-            catch (Exception ex)
+            var dto = new AddPurchasesDto
             {
-                return View("Error", new ErrorViewModel
-                {
-                    Errors = new List<string>
+                MemberId = vm.MemberId,
+                DatePurchased = vm.DatePurchased,
+                BrainFoodIds = new List<int>()
+            };
+
+            var result = await _purchaseService.AddPurchaseWithBrainFood(dto, brainFood);
+
+            if (result.Status != ServiceResponse.ServiceStatus.Created)
+                return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+            return RedirectToAction("List");
+        }
+
+        [HttpGet("EditPurchase/{id}")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var purchase = await _purchaseService.FindPurchaseForEdit(id);
+            if (purchase == null)
+                return View("Error", new ErrorViewModel { Errors = ["Purchase not found."] });
+
+            var brainFood = purchase.BrainFoods?.FirstOrDefault();
+            if (brainFood == null)
+                return View("Error", new ErrorViewModel { Errors = ["No BrainFood entry found for this purchase."] });
+
+            var vm = new UpdatePurchaseViewModel
             {
-                "An unexpected error occurred.",
-                ex.Message,
-                ex.InnerException?.Message ?? "",
-                ex.StackTrace ?? ""
-            }
-                });
-            }
+                PurchaseId = purchase.PurchaseId,
+                DatePurchased = purchase.DatePurchased,
+                MemberId = purchase.MemberId,
+                AssessmentId = brainFood.AssessmentId,
+                IngredientId = brainFood.IngredientId,
+                Quantity = brainFood.Quantity,
+
+                Members = (await _memberService.ListMembers())
+                    .Select(m => new SelectListItem { Text = m.Name, Value = m.MemberId.ToString() })
+                    .ToList(),
+                Assessments = (await _assessmentService.ListAssessments())
+                    .Select(a => new SelectListItem { Text = a.Title, Value = a.AssessmentId.ToString() })
+                    .ToList(),
+                Ingredients = (await _ingredientService.ListIngredients())
+                    .Select(i => new SelectListItem { Text = i.Name, Value = i.IngredientId.ToString() })
+                    .ToList()
+            };
+
+            return View(vm);
         }
 
 
+
+        [HttpPost("EditPurchase/{id}")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, UpdatePurchaseViewModel vm)
+        {
+            if (id != vm.PurchaseId)
+                return View("Error", new ErrorViewModel { Errors = ["Purchase ID mismatch."] });
+
+            if (!ModelState.IsValid)
+            {
+                vm.Members = (await _memberService.ListMembers())
+                    .Select(m => new SelectListItem { Text = m.Name, Value = m.MemberId.ToString() })
+                    .ToList();
+                vm.Assessments = (await _assessmentService.ListAssessments())
+                    .Select(a => new SelectListItem { Text = a.Title, Value = a.AssessmentId.ToString() })
+                    .ToList();
+                vm.Ingredients = (await _ingredientService.ListIngredients())
+                    .Select(i => new SelectListItem { Text = i.Name, Value = i.IngredientId.ToString() })
+                    .ToList();
+
+                return View(vm);
+            }
+
+            var brainFood = new BrainFood
+            {
+                AssessmentId = vm.AssessmentId,
+                IngredientId = vm.IngredientId,
+                Quantity = vm.Quantity
+            };
+
+            var dto = new UpdatePurchasesDto
+            {
+                PurchaseId = vm.PurchaseId,
+                DatePurchased = vm.DatePurchased,
+                BrainFoodIds = new List<int>() // will be added/linked via service
+            };
+
+            var result = await _purchaseService.UpdatePurchaseWithBrainFood(dto, brainFood);
+
+            if (result.Status != ServiceResponse.ServiceStatus.Updated)
+                return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+            return RedirectToAction("List");
+        }
+
+
+
         [HttpGet("DeletePurchase/{id}")]
-        [Authorize]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
             var purchase = await _purchaseService.FindPurchase(id);
@@ -139,15 +203,13 @@ namespace QuizCart.Controllers
         }
 
         [HttpPost("DeletePurchase/{id}")]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _purchaseService.DeletePurchase(id);
-            if (result.Status == ServiceResponse.ServiceStatus.Deleted)
-                return RedirectToAction("List");
-
-            return View("Error", new ErrorViewModel { Errors = result.Messages });
+            return result.Status == ServiceResponse.ServiceStatus.Deleted
+                ? RedirectToAction("List")
+                : View("Error", new ErrorViewModel { Errors = result.Messages });
         }
     }
 }
