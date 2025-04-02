@@ -59,4 +59,4 @@ This design ensures that each part of the application has a clear responsibility
 
 ## Contact
 
-For any queries or suggestions, reach out to [Himani Bansal](https://github.com/Himani1609).
+For any queries or suggestions, reach out to [Himani Bansal](https://github.com/Himani1609) or [Dhruv Shah](https://github.com/DhruvShah28)
