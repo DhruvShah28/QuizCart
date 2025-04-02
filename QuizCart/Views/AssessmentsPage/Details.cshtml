@@ -4,24 +4,28 @@
     ViewData["Title"] = "Assessment Details";
 }
 
-<h2>@Model.Title</h2>
+<div class="text-center">
+    <h2>@Model.Title</h2>
+</div>
 
-<p><strong>Date:</strong> @Model.DateOfAssessment.ToString("yyyy-MM-dd")</p>
-<p><strong>Difficulty:</strong> @Model.DifficultyLevel</p>
-<p><strong>Description:</strong> @Model.Description</p>
-<p><strong>Subject:</strong> @Model.SubjectName</p>
-<p><strong>Members:</strong> @string.Join(", ", Model.MemberNames)</p>
+<div class="assessment-info mb-4">
+    <p><strong>Date:</strong> @Model.DateOfAssessment.ToString("yyyy-MM-dd")</p>
+    <p><strong>Difficulty:</strong> @Model.DifficultyLevel</p>
+    <p><strong>Description:</strong> @Model.Description</p>
+    <p><strong>Subject:</strong> @Model.SubjectName</p>
+    <p><strong>Members:</strong> @string.Join(", ", Model.MemberNames)</p>
+</div>
 
 @if (Model.BrainFoods != null && Model.BrainFoods.Any())
 {
     <hr />
-    <h4>Required BrainFoods</h4>
+    <h4 class="text-center mb-4">Required BrainFoods</h4>
 
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Ingredient</th>
-                <th>Quantity(in grams)</th>
+                <th>Quantity (grams)</th>
                 <th>Unit Price</th>
                 <th>Actions</th>
             </tr>
@@ -34,8 +38,8 @@
                     <td>@bf.Quantity</td>
                     <td>@bf.UnitPrice.ToString("C2")</td>
                     <td>
-                        <a asp-controller="BrainFoodsPage" asp-action="Details" asp-route-id="@bf.BrainFoodId" class="btn btn-sm btn-info">View</a>
-                        <a asp-controller="BrainFoodsPage" asp-action="Edit" asp-route-id="@bf.BrainFoodId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-controller="BrainFoodsPage" asp-action="Details" asp-route-id="@bf.BrainFoodId" class="btn btn-info btn-sm">View</a>
+                        <a asp-controller="BrainFoodsPage" asp-action="Edit" asp-route-id="@bf.BrainFoodId" class="btn btn-warning btn-sm">Edit</a>
                     </td>
                 </tr>
             }
@@ -44,10 +48,83 @@
 }
 else
 {
-    <p class="text-muted">No brain foods assigned to this assessment.</p>
+    <p class="text-muted text-center">No brain foods assigned to this assessment.</p>
 }
 
 <hr />
-<a asp-action="List" class="btn btn-secondary">Back to List</a>
-<a asp-action="Edit" asp-route-id="@Model.AssessmentId" class="btn btn-success">Edit</a>
-<a asp-action="ConfirmDelete" asp-route-id="@Model.AssessmentId" class="btn btn-danger">Delete</a>
+
+<div class="btn-group text-center my-3">
+    <a asp-action="List" class="btn btn-primary btn-sm">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.AssessmentId" class="btn btn-warning btn-sm mx-2">Edit</a>
+    <a asp-action="ConfirmDelete" asp-route-id="@Model.AssessmentId" class="btn btn-danger btn-sm">Delete</a>
+</div>
+
+<style>
+    h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .assessment-info p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .table {
+        margin-top: 30px;
+    }
+
+    .table th, .table td {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #ddd;
+    }
+
+    .btn-group {
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .btn-group a {
+        margin: 0 5px;
+    }
+
+    .btn-sm {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border: none;
+    }
+
+    .text-muted {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+</style>

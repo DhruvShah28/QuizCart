@@ -17,8 +17,11 @@ namespace QuizCart.Services
         public async Task<IEnumerable<IngredientDto>> ListIngredients()
         {
             var ingredients = await _context.Ingredients
-                .Include(i => i.BrainFoods)
+                .Include(i => i.BrainFoods!)
                     .ThenInclude(bf => bf.Assessment)
+                .Include(i => i.BrainFoods!)
+                    .ThenInclude(bf => bf.Purchases!)
+                        .ThenInclude(p => p.Member)
                 .ToListAsync();
 
             return ingredients.Select(i => new IngredientDto
@@ -30,15 +33,36 @@ namespace QuizCart.Services
                 TotalAssessments = i.BrainFoods
                     .Select(bf => bf.AssessmentId)
                     .Distinct()
-                    .Count()
+                    .Count(),
+                AssessmentsUsedIn = i.BrainFoods.Select(bf => new BrainFoodDto
+                {
+                    BrainFoodId = bf.BrainFoodId,
+                    AssessmentId = bf.AssessmentId,
+                    AssessmentName = bf.Assessment?.Title ?? "Unknown",
+                    Quantity = bf.Quantity,
+                    UnitPrice = i.UnitPrice,
+                    Benefits = i.Benefits,
+                    IngredientId = i.IngredientId,
+                    IngredientName = i.Name,
+                    Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                    {
+                        MemberName = p.Member?.Name ?? "Unknown",
+                        DatePurchased = p.DatePurchased
+                    }).ToList() ?? new()
+                }).ToList()
             }).ToList();
         }
+
+
 
         public async Task<IngredientDto?> FindIngredient(int id)
         {
             var ingredient = await _context.Ingredients
-                .Include(i => i.BrainFoods)
-                .ThenInclude(bf => bf.Assessment)
+                .Include(i => i.BrainFoods!)
+                    .ThenInclude(bf => bf.Assessment)
+                .Include(i => i.BrainFoods!)
+                    .ThenInclude(bf => bf.Purchases!)
+                        .ThenInclude(p => p.Member)
                 .FirstOrDefaultAsync(i => i.IngredientId == id);
 
             if (ingredient == null) return null;
@@ -55,11 +79,24 @@ namespace QuizCart.Services
                     .Count(),
                 AssessmentsUsedIn = ingredient.BrainFoods.Select(bf => new BrainFoodDto
                 {
-                    AssessmentName = bf.Assessment.Title,
-                    Quantity = bf.Quantity
+                    BrainFoodId = bf.BrainFoodId,
+                    AssessmentId = bf.AssessmentId,
+                    AssessmentName = bf.Assessment?.Title ?? "Unknown",
+                    Quantity = bf.Quantity,
+                    UnitPrice = ingredient.UnitPrice,
+                    Benefits = ingredient.Benefits,
+                    IngredientId = ingredient.IngredientId,
+                    IngredientName = ingredient.Name,
+                    Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                    {
+                        MemberName = p.Member?.Name ?? "Unknown",
+                        DatePurchased = p.DatePurchased
+                    }).ToList() ?? new()
                 }).ToList()
             };
         }
+
+
 
 
         public async Task<ServiceResponse> AddIngredient(AddIngredientDto dto)

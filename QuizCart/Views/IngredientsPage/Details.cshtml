@@ -3,17 +3,20 @@
     ViewData["Title"] = "Ingredient Details";
 }
 
-<h2>@Model.Name</h2>
+<div class="text-center">
+    <h2>@Model.Name</h2>
+</div>
 
-<p><strong>Benefits:</strong> @Model.Benefits</p>
-<p><strong>Unit Price:</strong> $@Model.UnitPrice.ToString("0.00")</p>
-<p><strong>Total Assessments:</strong> @Model.TotalAssessments</p>
-
-<hr />
+<div class="ingredient-info mb-4">
+    <p><strong>Benefits:</strong> @Model.Benefits</p>
+    <p><strong>Unit Price:</strong> $@Model.UnitPrice.ToString("0.00")</p>
+    <p><strong>Total Assessments:</strong> @Model.TotalAssessments</p>
+</div>
 
 @if (Model.AssessmentsUsedIn != null && Model.AssessmentsUsedIn.Any())
 {
-    <h4>Used In Assessments:</h4>
+    <hr />
+    <h4 class="text-center mb-3">Used In Assessments:</h4>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -34,9 +37,63 @@
 }
 else
 {
-    <p>This ingredient is not linked to any assessments yet.</p>
+    <p class="text-muted text-center">This ingredient is not linked to any assessments yet.</p>
 }
-<a asp-action="List" class="btn btn-secondary">Back to List</a>
-<a asp-action="Edit" asp-route-id="@Model.IngredientId" class="btn btn-warning">Edit</a>
-<a asp-action="ConfirmDelete" asp-route-id="@Model.IngredientId" class="btn btn-danger">Delete</a>
 
+<hr />
+
+<div class="btn-group text-center mt-3">
+    <a asp-action="List" class="btn btn-primary btn-sm">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.IngredientId" class="btn btn-warning btn-sm mx-2">Edit</a>
+    <a asp-action="ConfirmDelete" asp-route-id="@Model.IngredientId" class="btn btn-danger btn-sm">Delete</a>
+</div>
+
+<style>
+    h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .ingredient-info p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .table {
+        margin-top: 30px;
+    }
+
+    .table th, .table td {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .text-muted {
+        font-size: 1.1rem;
+    }
+
+    .btn-group {
+        display: inline-block;
+    }
+
+    .btn-sm {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+</style>

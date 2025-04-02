@@ -3,35 +3,109 @@
     ViewData["Title"] = "Assessments";
 }
 
-<h2>Assessments</h2>
-<a asp-action="Add" class="btn btn-primary mb-3">Add Assessment</a>
+<h1 class="text-center my-4">@ViewData["Title"]</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Difficulty</th>
-            <th>Subject</th>
-            <th>Members</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var a in Model)
-        {
+<div class="mb-4">
+    <a asp-action="Add" class="btn btn-primary btn-lg">Add New Assessment</a>
+</div>
+
+<div>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <td>@a.Title</td>
-                <td>@a.DateOfAssessment.ToString("yyyy-MM-dd")</td>
-                <td class="text-capitalize">@a.DifficultyLevel.ToString()</td>
-                <td>@a.SubjectName</td>
-                <td>@string.Join(", ", a.MemberNames)</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@a.AssessmentId" class="btn btn-info btn-sm">View</a>
-                    <a asp-action="Edit" asp-route-id="@a.AssessmentId" class="btn btn-warning btn-sm">Edit</a>
-                    <a asp-action="ConfirmDelete" asp-route-id="@a.AssessmentId" class="btn btn-danger btn-sm">Delete</a>
-                </td>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Difficulty</th>
+                <th>Subject</th>
+                <th>Members</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@a.AssessmentId</td>
+                    <td>@a.Title</td>
+                    <td>@a.DateOfAssessment.ToString("yyyy-MM-dd")</td>
+                    <td class="text-capitalize">@a.DifficultyLevel</td>
+                    <td>@a.SubjectName</td>
+                    <td>@string.Join(", ", a.MemberNames)</td>
+                    <td class="text-center">
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@a.AssessmentId">View Details</a>
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@a.AssessmentId">Edit</a>
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-danger" asp-action="ConfirmDelete" asp-route-id="@a.AssessmentId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    h1 {
+        font-size: 2rem;
+        color: #343a40;
+        font-weight: bold;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+        margin: 5px;
+    }
+
+    .btn-lg {
+        padding: 12px 24px;
+    }
+
+    .table {
+        font-size: 1rem;
+    }
+
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .thead-dark th {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #f9f9f9;
+    }
+
+    .btn-primary {
+        background-color: #ee8822;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #FC9601;
+        border: none;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+</style>

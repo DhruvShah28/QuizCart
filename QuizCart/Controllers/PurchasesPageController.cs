@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using QuizCart.Interfaces;
 using QuizCart.Models;
@@ -111,6 +112,7 @@ namespace QuizCart.Controllers
         }
 
         [HttpGet("EditPurchase/{id}")]
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             var purchase = await _purchaseService.FindPurchaseForEdit(id);
@@ -148,6 +150,7 @@ namespace QuizCart.Controllers
 
         [HttpPost("EditPurchase/{id}")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, UpdatePurchaseViewModel vm)
         {
             if (id != vm.PurchaseId)
@@ -193,6 +196,7 @@ namespace QuizCart.Controllers
 
 
         [HttpGet("DeletePurchase/{id}")]
+        [Authorize]
         public async Task<IActionResult> ConfirmDelete(int id)
         {
             var purchase = await _purchaseService.FindPurchase(id);
@@ -204,6 +208,7 @@ namespace QuizCart.Controllers
 
         [HttpPost("DeletePurchase/{id}")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _purchaseService.DeletePurchase(id);

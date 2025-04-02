@@ -31,20 +31,20 @@ namespace QuizCart.Models
 
     public class BrainFoodDto
     {
-
-        [Key]
         public int BrainFoodId { get; set; }
+        public int IngredientId { get; set; }
+        public int AssessmentId { get; set; }
 
         public int Quantity { get; set; }
-
-        public string AssessmentName {  get; set; }
-
+        public string AssessmentName { get; set; }
         public string IngredientName { get; set; }
 
+        public string Benefits { get; set; }
         public float UnitPrice { get; set; }
 
-
+        public List<BrainFoodPurchaseDto> Purchases { get; set; } = new();
     }
+
     public class UpdateBrainFoodDto
     {
         public int BrainFoodId { get; set; }
@@ -79,5 +79,10 @@ namespace QuizCart.Models
     }
 
 
+    public class BrainFoodPurchaseDto
+    {
+        public string MemberName { get; set; }
+        public DateOnly DatePurchased { get; set; }
+    }
 
 }

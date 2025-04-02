@@ -78,5 +78,20 @@ namespace QuizCart.Controllers
 
             return Ok(new { message = $"Assessment with ID {id} deleted successfully." });
         }
+
+
+        [HttpGet("Assessments/{subjectId}")]
+        public async Task<ActionResult<IEnumerable<AssessmentDto>>> ListAssessmentsBySubjectId(int subjectId)
+        {
+            var assessments = await _assessmentService.ListAssessmentsBySubjectId(subjectId);
+
+            if (!assessments.Any())
+            {
+                return NotFound(new { message = $"No assessments found for subject ID {subjectId}" });
+            }
+
+            return Ok(assessments);
+        }
+
     }
 }

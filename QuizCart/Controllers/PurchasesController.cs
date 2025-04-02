@@ -94,5 +94,14 @@ namespace QuizCart.Controllers
             };
         }
 
+
+        [HttpGet("Purchases/{memberId}")]
+        public async Task<ActionResult<IEnumerable<PurchasesDto>>> ListPurchasesByMemberId(int memberId)
+        {
+            var purchases = await _purchaseService.ListPurchasesByMemberId(memberId);
+            return Ok(purchases);
+        }
+
+
     }
 }

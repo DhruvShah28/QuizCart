@@ -1,14 +1,22 @@
 ﻿@model QuizCart.Models.PurchasesDto
+
 @{
     ViewData["Title"] = "Purchase Details";
 }
 
-<h2>Purchase Details</h2>
+<div class="text-center">
+    <h2>@ViewData["Title"]</h2>
+</div>
 
-<p><strong>Purchase ID:</strong> @Model.PurchaseId</p>
-<p><strong>Date Purchased:</strong> @Model.DatePurchased.ToString("yyyy-MM-dd")</p>
+<div class="purchase-info mb-4">
+    <p><strong>Purchase ID:</strong> @Model.PurchaseId</p>
+    <p><strong>Date Purchased:</strong> @Model.DatePurchased.ToString("yyyy-MM-dd")</p>
+</div>
 
-<h4>Items</h4>
+<hr />
+
+<h4 class="my-4 text-center">Items in this Purchase</h4>
+
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -22,19 +30,79 @@
     <tbody>
         @foreach (var item in Model.Items)
         {
-                <tr>
-                    <td>@Model.MemberName</td>
-                    <td>@item.IngredientName</td>
-                    <td>@item.Quantity</td>
-                    <td>@item.UnitPrice.ToString("C2")</td>
-                    <td>@item.Total.ToString("C2")</td>
-                </tr>
+            <tr>
+                <td>@Model.MemberName</td>
+                <td>@item.IngredientName</td>
+                <td>@item.Quantity</td>
+                <td>@item.UnitPrice.ToString("C2")</td>
+                <td>@item.Total.ToString("C2")</td>
+            </tr>
         }
     </tbody>
 </table>
 
 <p><strong>Grand Total:</strong> <span class="fw-bold">@Model.TotalAmount.ToString("C2")</span></p>
 
-<a asp-action="List" class="btn btn-secondary">Back to List</a>
-<a asp-action="Edit" asp-route-id="@Model.PurchaseId" class="btn btn-warning">Edit</a>
-<a asp-action="ConfirmDelete" asp-route-id="@Model.PurchaseId" class="btn btn-danger">Delete</a>
+<hr />
+
+<div class="btn-group text-center my-3">
+    <a asp-action="List" class="btn btn-secondary btn-sm">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.PurchaseId" class="btn btn-warning btn-sm mx-2">Edit</a>
+    <a asp-action="ConfirmDelete" asp-route-id="@Model.PurchaseId" class="btn btn-danger btn-sm">Delete</a>
+</div>
+
+<style>
+    h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .purchase-info p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .btn-group {
+        display: inline-block;
+        margin-top: 15px;
+    }
+
+    .btn-sm {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .table {
+        margin-top: 30px;
+    }
+
+    .table th, .table td {
+        text-align: center;
+    }
+
+    .text-muted {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    .fw-bold {
+        font-weight: bold;
+    }
+</style>

@@ -46,6 +46,7 @@ namespace QuizCart.Services
                 {
                     MemberId = m.MemberId,
                     Name = m.Name,
+                    Email = m.Email, 
                     AmountPaid = amountPaid,
                     AmountOwed = amountOwed,
                     TotalSubjects = m.Subjects.Count,
@@ -55,6 +56,7 @@ namespace QuizCart.Services
 
             return memberDtos;
         }
+
 
 
         public async Task<MemberDto?> FindMember(int id)
@@ -88,6 +90,7 @@ namespace QuizCart.Services
             {
                 MemberId = targetMember.MemberId,
                 Name = targetMember.Name,
+                Email = targetMember.Email, 
                 AmountPaid = amountPaid,
                 AmountOwed = amountOwed,
                 TotalSubjects = targetMember.Subjects.Count,

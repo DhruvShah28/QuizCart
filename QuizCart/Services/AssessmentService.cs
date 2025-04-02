@@ -19,6 +19,11 @@ namespace QuizCart.Services
             var assessments = await _context.Assessments
                 .Include(a => a.Subject)
                     .ThenInclude(s => s.Members)
+                .Include(a => a.BrainFoods)
+                    .ThenInclude(bf => bf.Ingredient)
+                .Include(a => a.BrainFoods)
+                    .ThenInclude(bf => bf.Purchases!)
+                        .ThenInclude(p => p.Member)
                 .ToListAsync();
 
             return assessments.Select(a => new AssessmentDto
@@ -29,9 +34,26 @@ namespace QuizCart.Services
                 DateOfAssessment = a.DateOfAssessment,
                 DifficultyLevel = a.DifficultyLevel,
                 SubjectName = a.Subject?.Name ?? "Unknown",
-                MemberNames = a.Subject?.Members.Select(m => m.Name).ToList() ?? new List<string>()
+                MemberNames = a.Subject?.Members.Select(m => m.Name).ToList() ?? new(),
+                BrainFoods = a.BrainFoods?.Select(bf => new BrainFoodDto
+                {
+                    BrainFoodId = bf.BrainFoodId,
+                    Quantity = bf.Quantity,
+                    IngredientId = bf.IngredientId,
+                    AssessmentId = bf.AssessmentId,
+                    IngredientName = bf.Ingredient?.Name ?? "Unknown",
+                    Benefits = bf.Ingredient?.Benefits ?? "",
+                    UnitPrice = bf.Ingredient?.UnitPrice ?? 0f,
+                    Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                    {
+                        MemberName = p.Member?.Name ?? "Unknown",
+                        DatePurchased = p.DatePurchased
+                    }).ToList() ?? new()
+                }).ToList() ?? new()
             }).ToList();
         }
+
+
 
 
         public async Task<AssessmentDto?> FindAssessment(int id)
@@ -40,7 +62,10 @@ namespace QuizCart.Services
                 .Include(a => a.Subject)
                     .ThenInclude(s => s.Members)
                 .Include(a => a.BrainFoods)
-                    .ThenInclude(bf => bf.Ingredient) 
+                    .ThenInclude(bf => bf.Ingredient)
+                .Include(a => a.BrainFoods)
+                    .ThenInclude(bf => bf.Purchases!)
+                        .ThenInclude(p => p.Member)
                 .FirstOrDefaultAsync(a => a.AssessmentId == id);
 
             if (assessment == null) return null;
@@ -58,11 +83,20 @@ namespace QuizCart.Services
                 {
                     BrainFoodId = bf.BrainFoodId,
                     Quantity = bf.Quantity,
+                    IngredientId = bf.IngredientId,
+                    AssessmentId = bf.AssessmentId,
                     IngredientName = bf.Ingredient?.Name ?? "Unknown",
-                    UnitPrice = bf.Ingredient?.UnitPrice ?? 0f // 
+                    Benefits = bf.Ingredient?.Benefits ?? "",
+                    UnitPrice = bf.Ingredient?.UnitPrice ?? 0f,
+                    Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                    {
+                        MemberName = p.Member?.Name ?? "Unknown",
+                        DatePurchased = p.DatePurchased
+                    }).ToList() ?? new()
                 }).ToList() ?? new()
             };
         }
+
 
 
 
@@ -167,7 +201,14 @@ namespace QuizCart.Services
         public async Task<IEnumerable<AssessmentDto>> ListAssessmentsBySubjectId(int subjectId)
         {
             var subject = await _context.Subjects
+                .Include(s => s.Members)
                 .Include(s => s.Assessments)
+                    .ThenInclude(a => a.BrainFoods!)
+                        .ThenInclude(bf => bf.Ingredient)
+                .Include(s => s.Assessments)
+                    .ThenInclude(a => a.BrainFoods!)
+                        .ThenInclude(bf => bf.Purchases!)
+                            .ThenInclude(p => p.Member)
                 .FirstOrDefaultAsync(s => s.SubjectId == subjectId);
 
             if (subject == null || subject.Assessments == null)
@@ -180,9 +221,27 @@ namespace QuizCart.Services
                 Description = a.Description,
                 DateOfAssessment = a.DateOfAssessment,
                 DifficultyLevel = a.DifficultyLevel,
-                SubjectName = subject.Name
+                SubjectName = subject.Name,
+                MemberNames = subject.Members?.Select(m => m.Name).ToList() ?? new(),
+                BrainFoods = a.BrainFoods?.Select(bf => new BrainFoodDto
+                {
+                    BrainFoodId = bf.BrainFoodId,
+                    Quantity = bf.Quantity,
+                    IngredientId = bf.IngredientId,
+                    AssessmentId = bf.AssessmentId,
+                    IngredientName = bf.Ingredient?.Name ?? "Unknown",
+                    Benefits = bf.Ingredient?.Benefits ?? "",
+                    UnitPrice = bf.Ingredient?.UnitPrice ?? 0f,
+                    Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                    {
+                        MemberName = p.Member?.Name ?? "Unknown",
+                        DatePurchased = p.DatePurchased
+                    }).ToList() ?? new()
+                }).ToList() ?? new()
             }).ToList();
         }
+
+
 
     }
 }

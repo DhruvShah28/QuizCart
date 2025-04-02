@@ -3,14 +3,98 @@
     ViewData["Title"] = "BrainFood Details";
 }
 
-<h2>BrainFood Details</h2>
-
-<div class="mb-3">
-    <p><strong>Ingredient:</strong> @Model.IngredientName</p>
-    <p><strong>Assessment:</strong> @Model.AssessmentName</p>
-    <p><strong>Quantity:</strong> @Model.Quantity</p>
+<div class="text-center">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
 </div>
 
-<a asp-action="List" class="btn btn-secondary">Back to List</a>
-<a asp-action="Edit" asp-route-id="@Model.BrainFoodId" class="btn btn-success">Edit</a>
-<a asp-action="ConfirmDelete" asp-route-id="@Model.BrainFoodId" class="btn btn-danger">Delete</a>
+<div class="brainfood-info mb-4">
+    <p><strong>Assessment:</strong> @Model.AssessmentName</p>
+    <p><strong>Ingredient:</strong> @Model.IngredientName</p>
+    <p><strong>Benefits:</strong> @Model.Benefits</p>
+    <p><strong>Quantity:</strong> @Model.Quantity g</p>
+    <p><strong>Unit Price:</strong> $@Model.UnitPrice.ToString("0.00")</p>
+</div>
+
+@if (Model.Purchases != null && Model.Purchases.Any())
+{
+    <hr />
+    <h4 class="text-center mb-3">Purchases of this BrainFood</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Member</th>
+                <th>Date Purchased</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Purchases)
+            {
+                <tr>
+                    <td>@p.MemberName</td>
+                    <td>@p.DatePurchased.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted text-center">This brain food has not been purchased by any member yet.</p>
+}
+
+<hr />
+<div class="btn-group text-center mt-3">
+    <a asp-action="List" class="btn btn-primary btn-sm">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.BrainFoodId" class="btn btn-warning btn-sm mx-2">Edit</a>
+    <a asp-action="ConfirmDelete" asp-route-id="@Model.BrainFoodId" class="btn btn-danger btn-sm">Delete</a>
+</div>
+
+<style>
+    h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .brainfood-info p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .table {
+        margin-top: 30px;
+    }
+
+    .table th, .table td {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .text-muted {
+        font-size: 1.1rem;
+    }
+
+    .btn-group {
+        display: inline-block;
+    }
+
+    .btn-sm {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+</style>

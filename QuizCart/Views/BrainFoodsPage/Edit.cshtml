@@ -1,30 +1,114 @@
 ﻿@model QuizCart.Models.UpdateBrainFoodDto
+
 @{
     ViewData["Title"] = "Edit BrainFood";
 }
 
-<h2>Edit BrainFood</h2>
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center">Edit BrainFood</h2>
 
-<form asp-action="Edit" method="post">
-    @Html.AntiForgeryToken()
-    <input type="hidden" asp-for="BrainFoodId" />
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="BrainFoodId" />
 
-    <div class="mb-3">
-        <label asp-for="Quantity" class="form-label"></label>
-        <input asp-for="Quantity" class="form-control" />
-        <span asp-validation-for="Quantity" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IngredientId" class="control-label"></label>
+                <select asp-for="IngredientId" asp-items="ViewBag.Ingredients" class="form-control"></select>
+                <span asp-validation-for="IngredientId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AssessmentId" class="control-label"></label>
+                <select asp-for="AssessmentId" asp-items="ViewBag.Assessments" class="form-control"></select>
+                <span asp-validation-for="AssessmentId" class="text-danger"></span>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <a asp-action="List" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="mb-3">
-        <label asp-for="IngredientId" class="form-label"></label>
-        <select asp-for="IngredientId" asp-items="ViewBag.Ingredients" class="form-control"></select>
-    </div>
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 25px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-    <div class="mb-3">
-        <label asp-for="AssessmentId" class="form-label"></label>
-        <select asp-for="AssessmentId" asp-items="ViewBag.Assessments" class="form-control"></select>
-    </div>
+    h2 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
-    <button type="submit" class="btn btn-success">Save</button>
-    <a asp-action="List" class="btn btn-secondary">Cancel</a>
-</form>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.95rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+
+    .text-danger {
+        font-size: 0.85rem;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

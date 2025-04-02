@@ -1,42 +1,129 @@
 ﻿@model QuizCart.Models.AddAssessmentDto
 @using QuizCart.Models
+
 @{
     ViewData["Title"] = "Add Assessment";
 }
 
-<h2>Add New Assessment</h2>
+<div class="container">
+    <div class="form-container">
+        <h2 class="text-center">Add New Assessment</h2>
 
-<form asp-action="Add" method="post">
-    @Html.AntiForgeryToken()
+        <form asp-action="Add" method="post">
+            @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        <label asp-for="Title"></label>
-        <input asp-for="Title" class="form-control" />
+            <div class="form-group">
+                <label asp-for="Title"></label>
+                <input asp-for="Title" class="form-control" placeholder="Enter assessment title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" placeholder="Enter description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfAssessment"></label>
+                <input asp-for="DateOfAssessment" type="date" class="form-control" />
+                <span asp-validation-for="DateOfAssessment" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DifficultyLevel"></label>
+                @Html.DropDownListFor(model => model.DifficultyLevel,
+                         new SelectList(Enum.GetValues(typeof(Difficulty))),
+                         "-- Select Difficulty --",
+                         new { @class = "form-control" })
+                <span asp-validation-for="DifficultyLevel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SubjectId">Subject ID</label>
+                <input asp-for="SubjectId" class="form-control" />
+                <span asp-validation-for="SubjectId" class="text-danger"></span>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Add Assessment</button>
+                <a asp-action="List" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="form-group">
-        <label asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 25px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
 
-    <div class="form-group">
-        <label asp-for="DateOfAssessment"></label>
-        <input asp-for="DateOfAssessment" type="date" class="form-control" />
-    </div>
+    h2 {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
-    <div class="form-group">
-        <label asp-for="DifficultyLevel"></label>
-        @Html.DropDownListFor(model => model.DifficultyLevel,
-                 new SelectList(Enum.GetValues(typeof(Difficulty))),
-                 "-- Select Difficulty --",
-                 new { @class = "form-control" })
-    </div>
+    .form-group {
+        margin-bottom: 15px;
+    }
 
-    <div class="form-group">
-        <label asp-for="SubjectId"></label>
-        <input asp-for="SubjectId" class="form-control" />
-    </div>
+    .form-group label {
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
 
-    <button type="submit" class="btn btn-primary">Add</button>
-    <a asp-action="List" class="btn btn-secondary">Cancel</a>
-</form>
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.95rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #545b62;
+    }
+
+    .text-danger {
+        font-size: 0.85rem;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

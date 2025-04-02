@@ -4,22 +4,22 @@
     ViewData["Title"] = "Member Details";
 }
 
-<h2>Member Details</h2>
-<hr />
+<div class="text-center">
+    <h2>@Model.Member.Name</h2>
+</div>
 
-<div>
+<div class="member-info mb-4">
     <p><strong>Member ID:</strong> @Model.Member.MemberId</p>
     <p><strong>Name:</strong> @Model.Member.Name</p>
-    <p><strong>Amount Paid:</strong> @Model.Member.AmountPaid</p>
-    <p><strong>Amount Owed:</strong> @Model.Member.AmountOwed</p>
+    <p><strong>Amount Paid:</strong> $@Model.Member.AmountPaid.ToString("C2")</p>
+    <p><strong>Amount Owed:</strong> $@Model.Member.AmountOwed.ToString("C2")</p>
     <p><strong>Total Subjects:</strong> @Model.Member.TotalSubjects</p>
     <p><strong>Total Assessments:</strong> @Model.Member.TotalAssessments</p>
 </div>
 
 <hr />
 
-
-<h4>Link Subject to Member</h4>
+<h4 class="mt-4">Link Subject to Member</h4>
 
 @if (Model.UnlinkedSubjects != null && Model.UnlinkedSubjects.Any())
 {
@@ -44,7 +44,6 @@ else
 
 <hr />
 
-
 <h4 class="mt-4">Linked Subjects</h4>
 
 @if (Model.Subjects != null && Model.Subjects.Any())
@@ -66,12 +65,12 @@ else
                     <td>@subject.Name</td>
                     <td>@subject.Description</td>
                     <td>
-                        <a asp-controller="SubjectsPage" asp-action="Details" asp-route-id="@subject.SubjectId" class="btn btn-sm btn-info">View</a>
+                        <a asp-controller="SubjectsPage" asp-action="Details" asp-route-id="@subject.SubjectId" class="btn btn-info btn-sm">View</a>
 
                         <form asp-action="UnlinkSubject" method="post" class="d-inline">
                             <input type="hidden" name="MemberId" value="@Model.Member.MemberId" />
                             <input type="hidden" name="SubjectId" value="@subject.SubjectId" />
-                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
                         </form>
                     </td>
                 </tr>
@@ -86,7 +85,7 @@ else
 
 <hr />
 
-<h4>Purchases</h4>
+<h4 class="mt-4">Purchases</h4>
 
 @if (Model.Purchases != null && Model.Purchases.Any())
 {
@@ -109,9 +108,9 @@ else
                     <td>@string.Join(", ", p.IngredientNames ?? new List<string>())</td>
                     <td>@p.TotalAmount</td>
                     <td>
-                        <a asp-controller="PurchasesPage" asp-action="Details" asp-route-id="@p.PurchaseId" class="btn btn-sm btn-info">View</a>
-                        <a asp-controller="PurchasesPage" asp-action="Edit" asp-route-id="@p.PurchaseId" class="btn btn-sm btn-warning">Edit</a>
-                        <a asp-controller="PurchasesPage" asp-action="ConfirmDelete" asp-route-id="@p.PurchaseId" class="btn btn-sm btn-danger">Delete</a>
+                        <a asp-controller="PurchasesPage" asp-action="Details" asp-route-id="@p.PurchaseId" class="btn btn-info btn-sm">View</a>
+                        <a asp-controller="PurchasesPage" asp-action="Edit" asp-route-id="@p.PurchaseId" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-controller="PurchasesPage" asp-action="ConfirmDelete" asp-route-id="@p.PurchaseId" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
             }
@@ -127,8 +126,64 @@ else
 
 <div class="mt-4">
 
-    <a asp-action="List" class="btn btn-secondary">Back to List</a>
-    <a asp-action="Edit" asp-route-id="@Model.Member.MemberId" class="btn btn-success">Edit</a>
-    <a asp-action="ConfirmDelete" asp-route-id="@Model.Member.MemberId" class="btn btn-danger">Delete</a>
+    <a asp-action="List" class="btn btn-secondary btn-sm">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Member.MemberId" class="btn btn-warning btn-sm mx-2">Edit</a>
+    <a asp-action="ConfirmDelete" asp-route-id="@Model.Member.MemberId" class="btn btn-danger btn-sm">Delete</a>
 
 </div>
+
+<style>
+    h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .member-info p {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .btn-group {
+        display: inline-block;
+        margin-top: 15px;
+    }
+
+    .btn-sm {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        border-color: #ffc107;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .table {
+        margin-top: 30px;
+    }
+
+    .table th, .table td {
+        text-align: center;
+    }
+
+    .text-muted {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    .btn-group a {
+        margin-bottom: 15px;
+    }
+</style>

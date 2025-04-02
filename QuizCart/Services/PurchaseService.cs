@@ -28,9 +28,16 @@ namespace QuizCart.Services
                 DatePurchased = p.DatePurchased,
                 MemberName = p.Member.Name,
                 TotalAmount = p.BrainFoods.Sum(bf => bf.Quantity * bf.Ingredient.UnitPrice),
-                IngredientNames = p.BrainFoods.Select(bf => bf.Ingredient.Name).Distinct().ToList()
+                IngredientNames = p.BrainFoods.Select(bf => bf.Ingredient.Name).Distinct().ToList(),
+                Items = p.BrainFoods.Select(bf => new PurchaseItemDto
+                {
+                    IngredientName = bf.Ingredient.Name,
+                    Quantity = bf.Quantity,
+                    UnitPrice = bf.Ingredient.UnitPrice
+                }).ToList()
             }).ToList();
         }
+
 
         public async Task<PurchasesDto?> FindPurchase(int id)
         {
@@ -48,6 +55,7 @@ namespace QuizCart.Services
                 DatePurchased = p.DatePurchased,
                 MemberName = p.Member.Name,
                 TotalAmount = p.BrainFoods.Sum(bf => bf.Quantity * bf.Ingredient.UnitPrice),
+                IngredientNames = p.BrainFoods.Select(bf => bf.Ingredient.Name).Distinct().ToList(),
                 Items = p.BrainFoods.Select(bf => new PurchaseItemDto
                 {
                     IngredientName = bf.Ingredient.Name,
@@ -56,6 +64,7 @@ namespace QuizCart.Services
                 }).ToList()
             };
         }
+
 
 
         public async Task<ServiceResponse> AddPurchase(AddPurchasesDto dto)
@@ -249,9 +258,17 @@ namespace QuizCart.Services
                 DatePurchased = p.DatePurchased,
                 MemberName = p.Member.Name,
                 TotalAmount = p.BrainFoods.Sum(bf => bf.Quantity * bf.Ingredient.UnitPrice),
-                IngredientNames = p.BrainFoods.Select(bf => bf.Ingredient.Name).ToList()
+                IngredientNames = p.BrainFoods.Select(bf => bf.Ingredient.Name).Distinct().ToList(),
+                Items = p.BrainFoods.Select(bf => new PurchaseItemDto
+                {
+                    IngredientName = bf.Ingredient.Name,
+                    Quantity = bf.Quantity,
+                    UnitPrice = bf.Ingredient.UnitPrice
+                }).ToList()
             }).ToList();
         }
+
+
         public async Task<ServiceResponse> AddPurchaseWithBrainFood(AddPurchasesDto dto, BrainFood brainFood)
         {
             var response = new ServiceResponse();
@@ -319,10 +336,8 @@ namespace QuizCart.Services
                     return response;
                 }
 
-                // Clear existing BrainFoods if needed (or selectively update)
                 purchase.BrainFoods.Clear();
 
-                // Optional: Check for valid ingredient and assessment
                 var ingredientExists = await _context.Ingredients.AnyAsync(i => i.IngredientId == updatedBrainFood.IngredientId);
                 var assessmentExists = await _context.Assessments.AnyAsync(a => a.AssessmentId == updatedBrainFood.AssessmentId);
 
@@ -333,7 +348,7 @@ namespace QuizCart.Services
                     return response;
                 }
 
-                // Attach brain food manually
+              
                 var newBrainFood = new BrainFood
                 {
                     Quantity = updatedBrainFood.Quantity,
@@ -342,7 +357,7 @@ namespace QuizCart.Services
                 };
 
                 _context.BrainFoods.Add(newBrainFood);
-                await _context.SaveChangesAsync(); // Ensure brain food gets ID
+                await _context.SaveChangesAsync(); 
 
                 purchase.DatePurchased = dto.DatePurchased;
                 purchase.BrainFoods.Add(newBrainFood);

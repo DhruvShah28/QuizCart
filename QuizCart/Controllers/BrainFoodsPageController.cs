@@ -68,6 +68,7 @@ namespace QuizCart.Controllers
         }
 
         [HttpGet("Edit/{id}")]
+        [Authorize]
         public async Task<IActionResult> Edit(int id)
         {
             var brainFood = await _brainFoodService.FindBrainFood(id);
@@ -89,6 +90,7 @@ namespace QuizCart.Controllers
 
         [HttpPost("Edit/{id}")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, UpdateBrainFoodDto dto)
         {
             if (id != dto.BrainFoodId)

@@ -19,23 +19,37 @@ namespace QuizCart.Services
             var brainFoods = await _context.BrainFoods
                 .Include(bf => bf.Assessment)
                 .Include(bf => bf.Ingredient)
+                .Include(bf => bf.Purchases)
+                    .ThenInclude(p => p.Member)
                 .ToListAsync();
 
             return brainFoods.Select(bf => new BrainFoodDto
             {
                 BrainFoodId = bf.BrainFoodId,
                 Quantity = bf.Quantity,
+                IngredientId = bf.IngredientId,
                 IngredientName = bf.Ingredient?.Name ?? "Unknown",
-                AssessmentName = bf.Assessment?.Title ?? "Unknown"
+                AssessmentId = bf.AssessmentId,
+                AssessmentName = bf.Assessment?.Title ?? "Unknown",
+                Benefits = bf.Ingredient?.Benefits ?? "",
+                UnitPrice = bf.Ingredient?.UnitPrice ?? 0f,
+                Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                {
+                    MemberName = p.Member?.Name ?? "Unknown",
+                    DatePurchased = p.DatePurchased
+                }).ToList() ?? new()
             }).ToList();
         }
+
 
         public async Task<BrainFoodDto?> FindBrainFood(int id)
         {
             var bf = await _context.BrainFoods
-                .Include(bf => bf.Assessment)
-                .Include(bf => bf.Ingredient)
-                .FirstOrDefaultAsync(bf => bf.BrainFoodId == id);
+                .Include(b => b.Assessment)
+                .Include(b => b.Ingredient)
+                .Include(b => b.Purchases)
+                    .ThenInclude(p => p.Member)
+                .FirstOrDefaultAsync(b => b.BrainFoodId == id);
 
             if (bf == null) return null;
 
@@ -43,10 +57,20 @@ namespace QuizCart.Services
             {
                 BrainFoodId = bf.BrainFoodId,
                 Quantity = bf.Quantity,
+                AssessmentId = bf.AssessmentId,
+                AssessmentName = bf.Assessment?.Title ?? "Unknown",
+                IngredientId = bf.IngredientId,
                 IngredientName = bf.Ingredient?.Name ?? "Unknown",
-                AssessmentName = bf.Assessment?.Title ?? "Unknown"
+                Benefits = bf.Ingredient?.Benefits ?? "",
+                UnitPrice = bf.Ingredient?.UnitPrice ?? 0,
+                Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                {
+                    MemberName = p.Member.Name,
+                    DatePurchased = p.DatePurchased
+                }).ToList() ?? new()
             };
         }
+
 
         public async Task<ServiceResponse> AddBrainFood(AddBrainFoodDto dto)
         {

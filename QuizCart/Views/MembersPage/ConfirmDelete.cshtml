@@ -1,30 +1,56 @@
 ﻿@model QuizCart.Models.MemberDto
+
 @{
     ViewData["Title"] = "Confirm Delete";
 }
 
-<h2>Delete Member</h2>
-
-<div class="alert alert-warning">
-    Are you sure you want to delete the member <strong>@Model.Name</strong>?
+<div class="text-center">
+    <h2 class="text-center">Are you sure you want to delete this member?</h2>
 </div>
 
-<dl class="row">
-    <dt class="col-sm-2">Amount Paid</dt>
-    <dd class="col-sm-10">@Model.AmountPaid</dd>
+<div class="text-center mb-4">
+    <p class="text-primary">Name: @Model.Name</p>
+    <p class="text-primary">Amount Paid: @Model.AmountPaid.ToString("C2")</p>
+    <p class="text-primary">Amount Owed: @Model.AmountOwed.ToString("C2")</p>
+    <p class="text-primary">Total Subjects: @Model.TotalSubjects</p>
+    <p class="text-primary">Total Assessments: @Model.TotalAssessments</p>
+</div>
 
-    <dt class="col-sm-2">Amount Owed</dt>
-    <dd class="col-sm-10">@Model.AmountOwed</dd>
+<div class="text-center">
+    <form asp-action="DeleteMember" asp-route-id="@Model.MemberId" method="post">
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-danger btn-lg">Yes, Delete</button>
+        <a asp-action="List" class="btn btn-secondary btn-lg">Cancel</a>
+    </form>
+</div>
 
-    <dt class="col-sm-2">Subjects</dt>
-    <dd class="col-sm-10">@Model.TotalSubjects</dd>
+<style>
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
-    <dt class="col-sm-2">Assessments</dt>
-    <dd class="col-sm-10">@Model.TotalAssessments</dd>
-</dl>
+    .text-primary {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
 
-<form asp-action="DeleteMember" asp-route-id="@Model.MemberId"  method="post">
-    <input type="hidden" name="id" value="@Model.MemberId" />
-    <button type="submit" class="btn btn-danger">Yes, Delete</button>
-    <a asp-action="List" class="btn btn-secondary">Cancel</a>
-</form>
+    .btn-lg {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        color: white;
+    }
+</style>
