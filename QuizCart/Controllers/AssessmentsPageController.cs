@@ -23,14 +23,14 @@ namespace QuizCart.Controllers
             return RedirectToAction("List");
         }
 
-        [HttpGet("ListAssessments")]
+        [HttpGet("List")]
         public async Task<IActionResult> List()
         {
             var assessments = await _assessmentService.ListAssessments();
             return View(assessments);
         }
 
-        [HttpGet("AssessmentDetails/{id}")]
+        [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(int id)
         {
             var assessment = await _assessmentService.FindAssessment(id);

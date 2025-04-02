@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuizCart")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0843a3217a89f89b2c251bb33abbcb9b565cef03")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1296319929c7f7c5c49d04fccf2e4ba86a76c85b")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuizCart")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuizCart")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

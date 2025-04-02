@@ -487,32 +487,6 @@
   },
   {
     "ContainingType": "QuizCart.Controllers.PurchasesController",
-    "Method": "FindPurchaseForEdit",
-    "RelativePath": "api/Purchases/Edit/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "QuizCart.Models.Purchase",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "QuizCart.Controllers.PurchasesController",
     "Method": "FindPurchase",
     "RelativePath": "api/Purchases/Find/{id}",
     "HttpMethod": "GET",
@@ -793,22 +767,6 @@
   },
   {
     "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
-    "Method": "Details",
-    "RelativePath": "AssessmentsPage/AssessmentDetails/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
     "Method": "ConfirmDelete",
     "RelativePath": "AssessmentsPage/DeleteAssessment/{id}",
     "HttpMethod": "GET",
@@ -828,6 +786,22 @@
     "Method": "Delete",
     "RelativePath": "AssessmentsPage/DeleteAssessment/{id}",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
+    "Method": "Details",
+    "RelativePath": "AssessmentsPage/Details/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -899,7 +873,7 @@
   {
     "ContainingType": "QuizCart.Controllers.AssessmentsPageController",
     "Method": "List",
-    "RelativePath": "AssessmentsPage/ListAssessments",
+    "RelativePath": "AssessmentsPage/List",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
