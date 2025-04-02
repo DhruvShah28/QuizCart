@@ -8,6 +8,12 @@ using QuizCart.Services;
 
 namespace QuizCart.Controllers
 {
+
+    /// <summary>
+    /// Controller for managing purchase records through web pages.
+    /// Handles listing, adding, editing, viewing, and deleting purchases.
+    /// </summary>
+
     [Route("PurchasesPage")]
     public class PurchasesPageController : Controller
     {
@@ -26,9 +32,18 @@ namespace QuizCart.Controllers
             _assessmentService = assessmentService;
             _ingredientService = ingredientService;
         }
+        /// <summary>
+        /// Redirects base route to List.
+        /// </summary>
 
         [HttpGet]
         public IActionResult Index() => RedirectToAction("List");
+
+        /// <summary>
+        /// Lists all purchases.
+        /// </summary>
+        /// <returns>View with list of purchases.</returns>
+
 
         [HttpGet("List")]
         public async Task<IActionResult> List()
@@ -36,6 +51,13 @@ namespace QuizCart.Controllers
             var purchases = await _purchaseService.ListPurchases();
             return View(purchases);
         }
+
+        /// <summary>
+        /// Shows details of a specific purchase.
+        /// </summary>
+        /// <param name="id">Purchase ID.</param>
+        /// <returns>Details view or error view.</returns>
+
 
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(int id)
@@ -46,6 +68,12 @@ namespace QuizCart.Controllers
 
             return View(purchase);
         }
+
+        /// <summary>
+        /// Loads the add purchase form.
+        /// </summary>
+        /// <returns>View with populated dropdowns.</returns>
+
 
         [HttpGet("AddPurchase")]
         public async Task<IActionResult> Add()
@@ -66,6 +94,12 @@ namespace QuizCart.Controllers
 
             return View(vm);
         }
+
+        /// <summary>
+        /// Submits a new purchase record.
+        /// </summary>
+        /// <param name="vm">Purchase view model.</param>
+        /// <returns>Redirect to list or error view.</returns>
 
 
         [HttpPost("AddPurchase")]
@@ -111,6 +145,13 @@ namespace QuizCart.Controllers
             return RedirectToAction("List");
         }
 
+        /// <summary>
+        /// Loads edit form for a specific purchase.
+        /// </summary>
+        /// <param name="id">Purchase ID.</param>
+        /// <returns>View with populated data or error.</returns>
+
+
         [HttpGet("EditPurchase/{id}")]
         [Authorize]
         public async Task<IActionResult> Edit(int id)
@@ -146,6 +187,12 @@ namespace QuizCart.Controllers
             return View(vm);
         }
 
+        /// <summary>
+        /// Submits the edited purchase data.
+        /// </summary>
+        /// <param name="id">Purchase ID.</param>
+        /// <param name="vm">Updated purchase view model.</param>
+        /// <returns>Redirect or error view.</returns>
 
 
         [HttpPost("EditPurchase/{id}")]
@@ -193,6 +240,11 @@ namespace QuizCart.Controllers
             return RedirectToAction("List");
         }
 
+        /// <summary>
+        /// Loads confirmation for deleting a purchase.
+        /// </summary>
+        /// <param name="id">Purchase ID.</param>
+        /// <returns>Delete confirmation view or error.</returns>
 
 
         [HttpGet("DeletePurchase/{id}")]

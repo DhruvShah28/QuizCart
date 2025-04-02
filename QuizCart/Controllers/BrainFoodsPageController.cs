@@ -20,9 +20,19 @@ namespace QuizCart.Controllers
             _ingredientService = ingredientService;
             _assessmentService = assessmentService;
         }
+        /// <summary>
+        /// Redirects to the List action.
+        /// </summary>
+
 
         [HttpGet]
         public IActionResult Index() => RedirectToAction("List");
+
+        /// <summary>
+        /// Displays a list of all brain food items.
+        /// </summary>
+        /// <returns>View with list of brain foods.</returns>
+        /// <example>GET: BrainFoodsPage/List</example>
 
         [HttpGet("List")]
         public async Task<IActionResult> List()
@@ -30,6 +40,13 @@ namespace QuizCart.Controllers
             var brainFoods = await _brainFoodService.ListBrainFoods();
             return View(brainFoods);
         }
+
+        /// <summary>
+        /// Displays details of a specific brain food item.
+        /// </summary>
+        /// <param name="id">ID of the brain food.</param>
+        /// <returns>View with details or error view.</returns>
+        /// <example>GET: BrainFoodsPage/Details/1</example>
 
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(int id)
@@ -41,6 +58,12 @@ namespace QuizCart.Controllers
             return View(brainFood);
         }
 
+        /// <summary>
+        /// Displays the form to add a new brain food item.
+        /// </summary>
+        /// <returns>View with dropdowns for ingredients and assessments.</returns>
+
+
         [HttpGet("Add")]
         public async Task<IActionResult> Add()
         {
@@ -48,6 +71,13 @@ namespace QuizCart.Controllers
             ViewBag.Assessments = new SelectList(await _assessmentService.ListAssessments(), "AssessmentId", "Title");
             return View();
         }
+
+        /// <summary>
+        /// Submits the form to add a new brain food item.
+        /// </summary>
+        /// <param name="dto">AddBrainFoodDto containing the data.</param>
+        /// <returns>Redirect to list or error view.</returns>
+
 
         [HttpPost("Add")]
         [ValidateAntiForgeryToken]
@@ -66,6 +96,13 @@ namespace QuizCart.Controllers
 
             return RedirectToAction("List");
         }
+
+        /// <summary>
+        /// Displays the form to edit a brain food item.
+        /// </summary>
+        /// <param name="id">ID of the brain food to edit.</param>
+        /// <returns>View with pre-filled data or error view.</returns>
+
 
         [HttpGet("Edit/{id}")]
         [Authorize]
@@ -88,6 +125,14 @@ namespace QuizCart.Controllers
             return View(dto);
         }
 
+        /// <summary>
+        /// Submits the form to update a brain food item.
+        /// </summary>
+        /// <param name="id">ID of the brain food to update.</param>
+        /// <param name="dto">Updated values for the brain food.</param>
+        /// <returns>Redirect to details or error view.</returns>
+
+
         [HttpPost("Edit/{id}")]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -103,6 +148,13 @@ namespace QuizCart.Controllers
             return RedirectToAction("Details", new { id });
         }
 
+        /// <summary>
+        /// Shows a confirmation page before deleting a brain food item.
+        /// </summary>
+        /// <param name="id">ID of the brain food.</param>
+        /// <returns>Confirmation view or error view.</returns>
+
+
         [HttpGet("Delete/{id}")]
         [Authorize]
         public async Task<IActionResult> ConfirmDelete(int id)
@@ -113,6 +165,14 @@ namespace QuizCart.Controllers
 
             return View(brainFood);
         }
+
+
+        /// <summary>
+        /// Deletes a brain food item.
+        /// </summary>
+        /// <param name="id">ID of the brain food to delete.</param>
+        /// <returns>Redirect to list or error view.</returns>
+
 
         [HttpPost("Delete/{id}")]
         [Authorize]

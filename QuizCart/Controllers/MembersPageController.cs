@@ -7,6 +7,11 @@ using QuizCart.Services;
 
 namespace QuizCart.Controllers
 {
+    /// <summary>
+    /// Controller for managing member-related web views including listing, viewing details, adding, editing, deleting, and linking subjects.
+    /// </summary>
+
+
     [Route("MembersPage")]
     public class MembersPageController : Controller
     {
@@ -24,12 +29,22 @@ namespace QuizCart.Controllers
             _purchaseService = purchaseService;
         }
 
+        /// <summary>
+        /// Redirects base MembersPage route to list action.
+        /// </summary>
+
 
         [HttpGet]
         public IActionResult Index()
         {
             return RedirectToAction("List");
         }
+
+        /// <summary>
+        /// Lists all members with financial and participation summaries.
+        /// </summary>
+        /// <returns>View with a list of MemberDto</returns>
+
 
         // GET: MembersPage/ListMembers
         [HttpGet("ListMembers")]
@@ -38,6 +53,13 @@ namespace QuizCart.Controllers
             IEnumerable<MemberDto> members = await _memberService.ListMembers();
             return View(members);
         }
+
+        /// <summary>
+        /// Displays details of a specific member including linked subjects and purchases.
+        /// </summary>
+        /// <param name="id">The ID of the member.</param>
+        /// <returns>Detailed view of the member or error view.</returns>
+
 
         [HttpGet("MemberDetails/{id}")]
         public async Task<IActionResult> Details(int id)
@@ -69,6 +91,9 @@ namespace QuizCart.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Displays the form for adding a new member.
+        /// </summary>
 
 
         // GET: MembersPage/AddMember
@@ -77,6 +102,13 @@ namespace QuizCart.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Submits a new member record.
+        /// </summary>
+        /// <param name="dto">Member data to add.</param>
+        /// <returns>Redirect to list or error view.</returns>
+
 
         // POST: MembersPage/AddMember
         [HttpPost("AddMember")]
@@ -95,6 +127,13 @@ namespace QuizCart.Controllers
 
             return RedirectToAction("List");
         }
+
+        /// <summary>
+        /// Displays the form for editing an existing member.
+        /// </summary>
+        /// <param name="id">ID of the member to edit.</param>
+        /// <returns>Pre-filled form view or error if not found.</returns>
+
 
         // GET: MembersPage/EditMember/{id}
         [HttpGet("EditMember/{id}")]
@@ -117,6 +156,14 @@ namespace QuizCart.Controllers
 
             return View(dto);
         }
+
+        /// <summary>
+        /// Submits updated data for an existing member.
+        /// </summary>
+        /// <param name="id">ID of the member being edited.</param>
+        /// <param name="dto">Updated member data.</param>
+        /// <returns>Redirect to details or error view.</returns>
+
 
         // POST: MembersPage/EditMember/{id}
         [HttpPost("EditMember/{id}")]
@@ -142,6 +189,13 @@ namespace QuizCart.Controllers
             return RedirectToAction("Details", new { id });
         }
 
+        /// <summary>
+        /// Displays confirmation for deleting a member.
+        /// </summary>
+        /// <param name="id">ID of the member to delete.</param>
+        /// <returns>Confirmation view or error view.</returns>
+
+
         // GET: MembersPage/DeleteMember/{id}
         [HttpGet("DeleteMember/{id}")]
         [Authorize]
@@ -156,6 +210,13 @@ namespace QuizCart.Controllers
 
             return View(member);
         }
+
+        /// <summary>
+        /// Deletes a member after confirmation.
+        /// </summary>
+        /// <param name="id">ID of the member.</param>
+        /// <returns>Redirect to list or error view.</returns>
+
 
         // POST: MembersPage/DeleteMember/{id}
         [HttpPost("DeleteMember/{id}")]
@@ -175,6 +236,12 @@ namespace QuizCart.Controllers
             }
         }
 
+        /// <summary>
+        /// Links a subject to a member.
+        /// </summary>
+        /// <param name="dto">MemberId and SubjectId to link.</param>
+        /// <returns>Redirect to member details or error view.</returns>
+
 
         [HttpPost("LinkSubject")]
         [ValidateAntiForgeryToken]
@@ -189,6 +256,13 @@ namespace QuizCart.Controllers
 
             return RedirectToAction("Details", new { id = dto.MemberId });
         }
+
+        /// <summary>
+        /// Unlinks a subject from a member.
+        /// </summary>
+        /// <param name="dto">MemberId and SubjectId to unlink.</param>
+        /// <returns>Redirect to member details or error view.</returns>
+
 
         [HttpPost("UnlinkSubject")]
         [ValidateAntiForgeryToken]

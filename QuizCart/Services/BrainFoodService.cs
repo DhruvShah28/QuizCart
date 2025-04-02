@@ -14,6 +14,13 @@ namespace QuizCart.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all brain food items with related assessment, ingredient, and purchase details.
+        /// </summary>
+        /// <returns>
+        /// A list of BrainFoodDto containing quantity, ingredient details, assessment information, and linked purchases.
+        /// </returns>
+
         public async Task<IEnumerable<BrainFoodDto>> ListBrainFoods()
         {
             var brainFoods = await _context.BrainFoods
@@ -41,6 +48,13 @@ namespace QuizCart.Services
             }).ToList();
         }
 
+        /// <summary>
+        /// Finds a specific brain food item by its ID, including details about ingredient, assessment, and purchases.
+        /// </summary>
+        /// <param name="id">The ID of the brain food item to retrieve.</param>
+        /// <returns>
+        /// A BrainFoodDto with all related data, or null if not found.
+        /// </returns>
 
         public async Task<BrainFoodDto?> FindBrainFood(int id)
         {
@@ -71,7 +85,13 @@ namespace QuizCart.Services
             };
         }
 
-
+        /// <summary>
+        /// Adds a new brain food entry linking an ingredient and an assessment.
+        /// </summary>
+        /// <param name="dto">The DTO containing details about the brain food to add.</param>
+        /// <returns>
+        /// A service response with creation status and the new brain food ID if successful.
+        /// </returns>
         public async Task<ServiceResponse> AddBrainFood(AddBrainFoodDto dto)
         {
             ServiceResponse response = new();
@@ -100,6 +120,15 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Updates the details of an existing brain food item.
+        /// </summary>
+        /// <param name="id">The ID of the brain food to update.</param>
+        /// <param name="dto">The updated data for the brain food.</param>
+        /// <returns>
+        /// A service response indicating update status or errors.
+        /// </returns>
 
         public async Task<ServiceResponse> UpdateBrainFood(int id, UpdateBrainFoodDto dto)
         {
@@ -138,6 +167,15 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Deletes a brain food item from the database.
+        /// </summary>
+        /// <param name="id">The ID of the brain food to delete.</param>
+        /// <returns>
+        /// A service response indicating deletion success or failure.
+        /// </returns>
+
 
         public async Task<ServiceResponse> DeleteBrainFood(int id)
         {

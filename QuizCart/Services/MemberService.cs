@@ -14,6 +14,11 @@ namespace QuizCart.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all members along with their financial information, subject count, and assessment count.
+        /// Calculates each member's amount paid, amount owed (based on shared expense), and counts total subjects and assessments.
+        /// </summary>
+        /// <returns>List of MemberDto containing detailed member info.</returns>
         public async Task<IEnumerable<MemberDto>> ListMembers()
         {
             var members = await _context.Members
@@ -57,8 +62,11 @@ namespace QuizCart.Services
             return memberDtos;
         }
 
-
-
+        /// <summary>
+        /// Retrieves a single member by their ID and calculates their payment/owes details and counts.
+        /// </summary>
+        /// <param name="id">The ID of the member to retrieve.</param>
+        /// <returns>MemberDto with the member's details or null if not found.</returns>
         public async Task<MemberDto?> FindMember(int id)
         {
             var members = await _context.Members
@@ -98,6 +106,12 @@ namespace QuizCart.Services
             };
         }
 
+        /// <summary>
+        /// Updates a member's name and email based on the given ID and update DTO.
+        /// </summary>
+        /// <param name="id">The ID of the member to update.</param>
+        /// <param name="updateDto">The updated member details.</param>
+        /// <returns>ServiceResponse indicating the result of the operation.</returns>
 
         public async Task<ServiceResponse> UpdateMember(int id, UpdateMemberDto updateDto)
         {
@@ -154,6 +168,12 @@ namespace QuizCart.Services
             return serviceResponse;
         }
 
+        /// <summary>
+        /// Adds a new member to the database.
+        /// </summary>
+        /// <param name="addDto">The data for the new member.</param>
+        /// <returns>ServiceResponse containing status and created ID if successful.</returns>
+
         public async Task<ServiceResponse> AddMember(AddMemberDto addDto)
         {
             ServiceResponse serviceResponse = new();
@@ -185,6 +205,12 @@ namespace QuizCart.Services
             serviceResponse.CreatedId = member.MemberId;
             return serviceResponse;
         }
+
+        /// <summary>
+        /// Deletes a member from the database by their ID.
+        /// </summary>
+        /// <param name="id">The ID of the member to delete.</param>
+        /// <returns>ServiceResponse indicating the result of the operation.</returns>
 
         public async Task<ServiceResponse> DeleteMember(int id)
         {
@@ -220,6 +246,11 @@ namespace QuizCart.Services
             return serviceResponse;
         }
 
+        /// <summary>
+        /// Links a subject to a member if not already linked.
+        /// </summary>
+        /// <param name="dto">DTO containing MemberId and SubjectId to link.</param>
+        /// <returns>ServiceResponse indicating result.</returns>
 
         public async Task<ServiceResponse> LinkSubject(LinkSubjectDto dto)
         {
@@ -247,6 +278,12 @@ namespace QuizCart.Services
             response.Status = ServiceResponse.ServiceStatus.Updated;
             return response;
         }
+
+        /// <summary>
+        /// Unlinks a subject from a member if currently linked.
+        /// </summary>
+        /// <param name="dto">DTO containing MemberId and SubjectId to unlink.</param>
+        /// <returns>ServiceResponse indicating result.</returns>
 
         public async Task<ServiceResponse> UnlinkSubject(LinkSubjectDto dto)
         {

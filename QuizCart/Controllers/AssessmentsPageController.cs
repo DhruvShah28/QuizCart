@@ -7,6 +7,7 @@ using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Controllers
 {
+
     [Route("AssessmentsPage")]
     public class AssessmentsPageController : Controller
     {
@@ -17,11 +18,23 @@ namespace QuizCart.Controllers
             _assessmentService = assessmentService;
         }
 
+        /// <summary>
+        /// Redirects to the List view of assessments.
+        /// </summary>
+        /// <returns>Redirect to List action</returns>
+
+
         [HttpGet]
         public IActionResult Index()
         {
             return RedirectToAction("List");
         }
+
+        /// <summary>
+        /// Displays a list of all assessments.
+        /// </summary>
+        /// <returns>View with list of assessments</returns>
+
 
         [HttpGet("List")]
         public async Task<IActionResult> List()
@@ -29,6 +42,13 @@ namespace QuizCart.Controllers
             var assessments = await _assessmentService.ListAssessments();
             return View(assessments);
         }
+
+        /// <summary>
+        /// Displays detailed information of a specific assessment.
+        /// </summary>
+        /// <param name="id">Assessment ID</param>
+        /// <returns>Assessment detail view or error if not found</returns>
+
 
         [HttpGet("Details/{id}")]
         public async Task<IActionResult> Details(int id)
@@ -42,6 +62,10 @@ namespace QuizCart.Controllers
             return View(assessment);
         }
 
+        /// <summary>
+        /// Displays the form to add a new assessment.
+        /// </summary>
+        /// <returns>Add assessment view</returns>
 
 
         [HttpGet("AddAssessment")]
@@ -49,6 +73,13 @@ namespace QuizCart.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// Adds a new assessment to the system.
+        /// </summary>
+        /// <param name="dto">Assessment details</param>
+        /// <returns>Redirects to List view if successful; error view otherwise</returns>
+
 
         [HttpPost("AddAssessment")]
         [ValidateAntiForgeryToken]
@@ -62,6 +93,13 @@ namespace QuizCart.Controllers
 
             return RedirectToAction("List");
         }
+
+        /// <summary>
+        /// Displays the form to edit an existing assessment.
+        /// </summary>
+        /// <param name="id">Assessment ID</param>
+        /// <returns>Edit view with pre-filled data or error view if not found</returns>
+
 
         [HttpGet("EditAssessment/{id}")]
         [Authorize]
@@ -83,6 +121,13 @@ namespace QuizCart.Controllers
             return View(dto);
         }
 
+        /// <summary>
+        /// Updates an existing assessment.
+        /// </summary>
+        /// <param name="id">Assessment ID</param>
+        /// <param name="dto">Updated assessment data</param>
+        /// <returns>Redirect to details view if successful; error view otherwise</returns>
+
         [HttpPost("EditAssessment/{id}")]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -98,6 +143,12 @@ namespace QuizCart.Controllers
             return RedirectToAction("Details", new { id });
         }
 
+        /// <summary>
+        /// Displays confirmation page to delete an assessment.
+        /// </summary>
+        /// <param name="id">Assessment ID</param>
+        /// <returns>Delete confirmation view or error if not found</returns>
+
         [HttpGet("DeleteAssessment/{id}")]
         [Authorize]
         public async Task<IActionResult> ConfirmDelete(int id)
@@ -108,6 +159,13 @@ namespace QuizCart.Controllers
 
             return View(assessment);
         }
+
+        /// <summary>
+        /// Deletes a specific assessment.
+        /// </summary>
+        /// <param name="id">Assessment ID</param>
+        /// <returns>Redirect to list if deleted successfully; error view otherwise</returns>
+
 
         [HttpPost("DeleteAssessment/{id}")]
         [Authorize]

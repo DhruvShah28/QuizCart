@@ -14,6 +14,15 @@ namespace QuizCart.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all ingredients, each including the details of brain foods,
+        /// related assessments, and associated purchases by members.
+        /// </summary>
+        /// <returns>
+        /// A list of IngredientDto containing ingredient information, the assessments it is used in,
+        /// and which members purchased items containing this ingredient.
+        /// </returns>
+
         public async Task<IEnumerable<IngredientDto>> ListIngredients()
         {
             var ingredients = await _context.Ingredients
@@ -53,7 +62,13 @@ namespace QuizCart.Services
             }).ToList();
         }
 
-
+        /// <summary>
+        /// Retrieves a specific ingredient by ID, including its associated assessments and purchases.
+        /// </summary>
+        /// <param name="id">The ID of the ingredient.</param>
+        /// <returns>
+        /// An IngredientDto if found, otherwise null.
+        /// </returns>
 
         public async Task<IngredientDto?> FindIngredient(int id)
         {
@@ -96,8 +111,13 @@ namespace QuizCart.Services
             };
         }
 
-
-
+        /// <summary>
+        /// Adds a new ingredient to the database.
+        /// </summary>
+        /// <param name="dto">The data transfer object containing ingredient details.</param>
+        /// <returns>
+        /// A ServiceResponse with Created status if successful, or Error status with messages if not.
+        /// </returns>
 
         public async Task<ServiceResponse> AddIngredient(AddIngredientDto dto)
         {
@@ -126,6 +146,15 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Updates an existing ingredient based on the provided ID and data.
+        /// </summary>
+        /// <param name="id">The ID of the ingredient to update.</param>
+        /// <param name="dto">The updated ingredient information.</param>
+        /// <returns>
+        /// A ServiceResponse indicating whether the update was successful or failed.
+        /// </returns>
 
         public async Task<ServiceResponse> UpdateIngredient(int id, UpdateIngredientDto dto)
         {
@@ -164,6 +193,14 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Deletes an ingredient by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the ingredient to delete.</param>
+        /// <returns>
+        /// A ServiceResponse indicating the result of the delete operation.
+        /// </returns>
 
         public async Task<ServiceResponse> DeleteIngredient(int id)
         {

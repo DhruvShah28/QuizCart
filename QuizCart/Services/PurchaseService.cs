@@ -14,6 +14,11 @@ namespace QuizCart.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all purchases including member, brainfoods, and calculated totals.
+        /// </summary>
+        /// <returns>List of PurchasesDto containing purchase details with associated brainfoods and total amount.</returns>
+
         public async Task<IEnumerable<PurchasesDto>> ListPurchases()
         {
             var purchases = await _context.Purchases
@@ -38,6 +43,11 @@ namespace QuizCart.Services
             }).ToList();
         }
 
+        /// <summary>
+        /// Retrieves a specific purchase by ID with all associated data.
+        /// </summary>
+        /// <param name="id">The ID of the purchase.</param>
+        /// <returns>A PurchasesDto or null if not found.</returns>
 
         public async Task<PurchasesDto?> FindPurchase(int id)
         {
@@ -65,7 +75,11 @@ namespace QuizCart.Services
             };
         }
 
-
+        /// <summary>
+        /// Adds a new purchase and links associated brain food items.
+        /// </summary>
+        /// <param name="dto">AddPurchasesDto with member ID, date, and brainfood IDs.</param>
+        /// <returns>ServiceResponse with creation status or error message.</returns>
 
         public async Task<ServiceResponse> AddPurchase(AddPurchasesDto dto)
         {
@@ -113,6 +127,12 @@ namespace QuizCart.Services
             return response;
         }
 
+        /// <summary>
+        /// Updates an existing purchase and its linked brainfood items.
+        /// </summary>
+        /// <param name="id">The ID of the purchase to update.</param>
+        /// <param name="dto">UpdatePurchasesDto with new brainfood links.</param>
+        /// <returns>ServiceResponse indicating update status or errors.</returns>
 
         public async Task<ServiceResponse> UpdatePurchase(int id, UpdatePurchasesDto dto)
         {
@@ -157,6 +177,12 @@ namespace QuizCart.Services
             return response;
         }
 
+        /// <summary>
+        /// Deletes a purchase by ID.
+        /// </summary>
+        /// <param name="id">The ID of the purchase to delete.</param>
+        /// <returns>ServiceResponse indicating deletion result.</returns>
+
 
         public async Task<ServiceResponse> DeletePurchase(int id)
         {
@@ -186,6 +212,9 @@ namespace QuizCart.Services
             return response;
         }
 
+        /// <summary>
+        /// Links a brainfood item to an existing purchase.
+        /// </summary>
 
         public async Task<ServiceResponse> LinkBrainFood(LinkBrainFoodDto dto)
         {
@@ -213,6 +242,10 @@ namespace QuizCart.Services
             response.Status = ServiceResponse.ServiceStatus.Updated;
             return response;
         }
+        /// <summary>
+        /// Unlinks a brainfood item from an existing purchase.
+        /// </summary>
+
         public async Task<ServiceResponse> UnlinkBrainFood(LinkBrainFoodDto dto)
         {
             var response = new ServiceResponse();
@@ -243,6 +276,12 @@ namespace QuizCart.Services
             return response;
         }
 
+        /// <summary>
+        /// Lists all purchases made by a specific member.
+        /// </summary>
+        /// <param name="memberId">The ID of the member.</param>
+        /// <returns>List of PurchasesDto for the specified member.</returns>
+
         public async Task<IEnumerable<PurchasesDto>> ListPurchasesByMemberId(int memberId)
         {
             var purchases = await _context.Purchases
@@ -268,6 +307,9 @@ namespace QuizCart.Services
             }).ToList();
         }
 
+        /// <summary>
+        /// Adds a new purchase and also creates a new BrainFood entry to associate.
+        /// </summary>
 
         public async Task<ServiceResponse> AddPurchaseWithBrainFood(AddPurchasesDto dto, BrainFood brainFood)
         {
@@ -318,6 +360,9 @@ namespace QuizCart.Services
             return response;
         }
 
+        /// <summary>
+        /// Updates an existing purchase and creates a new associated BrainFood item.
+        /// </summary>
 
         public async Task<ServiceResponse> UpdatePurchaseWithBrainFood(UpdatePurchasesDto dto, BrainFood updatedBrainFood)
         {
@@ -377,6 +422,12 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Returns a raw Purchase model for edit purposes with all linked brainfoods.
+        /// </summary>
+        /// <param name="id">Purchase ID</param>
+        /// <returns>Purchase entity with linked BrainFoods or null</returns>
 
 
         public async Task<Purchase?> FindPurchaseForEdit(int id)

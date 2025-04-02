@@ -14,6 +14,14 @@ namespace QuizCart.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Returns a list of subjects including their total assessments and members.
+        /// </summary>
+        /// <returns>
+        /// List of SubjectDto containing SubjectId, Name, Description, TotalAssessments, and TotalMembers
+        ///</returns>
+
+
         public async Task<IEnumerable<SubjectDto>> ListSubjects()
         {
             var subjects = await _context.Subjects
@@ -30,6 +38,12 @@ namespace QuizCart.Services
                 TotalMembers = s.Members.Count
             }).ToList();
         }
+
+        /// <summary>
+        /// Finds and returns a subject by its ID with its assessments and members.
+        /// </summary>
+        /// <param name="id">The ID of the subject</param>
+        /// <returns>SubjectDto with subject details or null if not found</returns>
 
         public async Task<SubjectDto?> FindSubject(int id)
         {
@@ -49,6 +63,12 @@ namespace QuizCart.Services
                 TotalMembers = subject.Members.Count
             };
         }
+
+        /// <summary>
+        /// Adds a new subject to the database.
+        /// </summary>
+        /// <param name="addDto">The subject data to add</param>
+        /// <returns>ServiceResponse with status and created subject ID or error message</returns>
 
         public async Task<ServiceResponse> AddSubject(AddSubjectDto addDto)
         {
@@ -77,6 +97,13 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Updates an existing subject.
+        /// </summary>
+        /// <param name="id">The ID of the subject to update</param>
+        /// <param name="dto">The updated subject details</param>
+        /// <returns>ServiceResponse with status indicating success, error, or not found</returns>
 
         public async Task<ServiceResponse> UpdateSubject(int id, UpdateSubjectDto dto)
         {
@@ -115,6 +142,12 @@ namespace QuizCart.Services
             return response;
         }
 
+        /// <summary>
+        /// Deletes a subject by ID.
+        /// </summary>
+        /// <param name="id">The ID of the subject to delete</param>
+        /// <returns>ServiceResponse with status indicating success, error, or not found</returns>
+
         public async Task<ServiceResponse> DeleteSubject(int id)
         {
             ServiceResponse response = new();
@@ -143,7 +176,11 @@ namespace QuizCart.Services
             return response;
         }
 
-
+        /// <summary>
+        /// Lists subjects that a given member is associated with, including assessment and member counts.
+        /// </summary>
+        /// <param name="memberId">The ID of the member</param>
+        /// <returns>List of SubjectDto or an empty list if member or subjects are not found</returns>
 
         public async Task<IEnumerable<SubjectDto>> ListSubjectsByMemberId(int memberId)
         {

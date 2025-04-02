@@ -9257,19 +9257,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\himan\\.nuget\\packages\\": {}
+    "C:\\Users\\dhruv\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\QuizCart.csproj",
+      "projectUniqueName": "C:\\Users\\dhruv\\Desktop\\Live Projects\\quizcart_v2\\QuizCart\\QuizCart\\QuizCart.csproj",
       "projectName": "QuizCart",
-      "projectPath": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\QuizCart.csproj",
-      "packagesPath": "C:\\Users\\himan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\obj\\",
+      "projectPath": "C:\\Users\\dhruv\\Desktop\\Live Projects\\quizcart_v2\\QuizCart\\QuizCart\\QuizCart.csproj",
+      "packagesPath": "C:\\Users\\dhruv\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dhruv\\Desktop\\Live Projects\\quizcart_v2\\QuizCart\\QuizCart\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\himan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dhruv\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

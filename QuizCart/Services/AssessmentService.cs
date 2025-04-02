@@ -14,6 +14,12 @@ namespace QuizCart.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieves a list of all assessments including their associated subject, members, and brain foods with ingredient and purchase details.
+        /// </summary>
+        /// <returns>List of AssessmentDto representing detailed information about each assessment.</returns>
+
+
         public async Task<IEnumerable<AssessmentDto>> ListAssessments()
         {
             var assessments = await _context.Assessments
@@ -53,7 +59,11 @@ namespace QuizCart.Services
             }).ToList();
         }
 
-
+        /// <summary>
+        /// Retrieves a single assessment based on its ID, with detailed subject, member, brain food, and ingredient data.
+        /// </summary>
+        /// <param name="id">The ID of the assessment to retrieve.</param>
+        /// <returns>AssessmentDto object or null if not found.</returns>
 
 
         public async Task<AssessmentDto?> FindAssessment(int id)
@@ -97,7 +107,11 @@ namespace QuizCart.Services
             };
         }
 
-
+        /// <summary>
+        /// Adds a new assessment to the database.
+        /// </summary>
+        /// <param name="dto">AddAssessmentDto containing data for the new assessment.</param>
+        /// <returns>ServiceResponse with status and created ID if successful.</returns>
 
 
         public async Task<ServiceResponse> AddAssessment(AddAssessmentDto dto)
@@ -129,6 +143,14 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Updates an existing assessment's data.
+        /// </summary>
+        /// <param name="id">The ID of the assessment to update.</param>
+        /// <param name="dto">UpdateAssessmentDto containing updated data.</param>
+        /// <returns>ServiceResponse indicating the update result.</returns>
+
 
         public async Task<ServiceResponse> UpdateAssessment(int id, UpdateAssessmentDto dto)
         {
@@ -169,6 +191,13 @@ namespace QuizCart.Services
             return response;
         }
 
+        /// <summary>
+        /// Deletes an assessment from the database.
+        /// </summary>
+        /// <param name="id">The ID of the assessment to delete.</param>
+        /// <returns>ServiceResponse indicating the deletion result.</returns>
+
+
         public async Task<ServiceResponse> DeleteAssessment(int id)
         {
             ServiceResponse response = new();
@@ -196,6 +225,12 @@ namespace QuizCart.Services
 
             return response;
         }
+
+        /// <summary>
+        /// Retrieves a list of assessments associated with a specific subject by subject ID.
+        /// </summary>
+        /// <param name="subjectId">The ID of the subject to filter assessments by.</param>
+        /// <returns>List of AssessmentDto associated with the specified subject.</returns>
 
 
         public async Task<IEnumerable<AssessmentDto>> ListAssessmentsBySubjectId(int subjectId)
