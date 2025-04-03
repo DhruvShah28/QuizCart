@@ -57,6 +57,11 @@
 
 This design ensures that each part of the application has a clear responsibility, improving maintainability, flexibility, and testability.
 
+
+## Collaboration Details
+
+Our team collaborated extensively on designing the data models and populating the database. Following this, Himani and I divided responsibilities, each taking charge of three entities for controllers, services, interfaces, page controllers, and views. This structured approach enabled us to efficiently develop and integrate various components while ensuring consistency and maintainability across the project.
+
 ## Contact
 
 For any queries or suggestions, reach out to [Himani Bansal](https://github.com/Himani1609) or [Dhruv Shah](https://github.com/DhruvShah28)
