@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +31,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T01:08:32.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "QuizCart\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "QuizCart\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAIwFYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T01:07:35.359Z",
+              "EditorCaption": ""
             }
           ]
         },

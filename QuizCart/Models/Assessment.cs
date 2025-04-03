@@ -91,7 +91,8 @@ namespace QuizCart.Models
         public Difficulty DifficultyLevel { get; set; }
 
         [Required]
-        public int SubjectId { get; set; } 
+        public int SubjectId { get; set; }
+
     }
 
 

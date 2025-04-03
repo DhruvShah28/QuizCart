@@ -14,7 +14,7 @@
 
 @if (Model.Assessments != null && Model.Assessments.Any())
 {
-    <h5 class="mt-4">This subject has the following assessments linked:</h5>
+    <h5 class="mt-4 text-center">This subject has the following assessments linked:</h5>
     <ul class="list-group w-50 mx-auto text-left">
         @foreach (var assessment in Model.Assessments)
         {
@@ -24,7 +24,7 @@
 }
 else
 {
-    <p>No assessments are currently linked to this subject.</p>
+    <p class="text-center">No assessments are currently linked to this subject.</p>
 }
 
 <div class="text-center mt-4">
