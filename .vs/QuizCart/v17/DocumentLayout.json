@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Ingredients.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Assessments.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.MemberSubject.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.BrainFoodPurchase.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.BrainFoods.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Purchases.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Subjects.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Members.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,27 +55,94 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_LoginPartial.cshtml",
-              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
-              "RelativeDocumentMoniker": "QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
-              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
-              "RelativeToolTip": "QuizCart\\Views\\Shared\\_LoginPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-03T01:08:32.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "QuizCart\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "QuizCart\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAIwFYAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-03T01:07:35.359Z",
+              "WhenOpened": "2025-04-03T14:50:58.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "dbo.MemberSubject [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.MemberSubject.sql",
+              "ToolTip": "dbo.MemberSubject [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:04:51.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "dbo.BrainFoodPurchase [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.BrainFoodPurchase.sql",
+              "ToolTip": "dbo.BrainFoodPurchase [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:04:23.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dbo.Ingredients [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Ingredients.sql",
+              "ToolTip": "dbo.Ingredients [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:03:01.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dbo.Assessments [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Assessments.sql",
+              "ToolTip": "dbo.Assessments [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:02:11.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "dbo.BrainFoods [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.BrainFoods.sql",
+              "ToolTip": "dbo.BrainFoods [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:01:47.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "dbo.Purchases [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Purchases.sql",
+              "ToolTip": "dbo.Purchases [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:01:19.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "dbo.Subjects [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Subjects.sql",
+              "ToolTip": "dbo.Subjects [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:00:46.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "dbo.Members [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_QuizCart_2503c458_8d55_452c_b0e7_5e2cb05fec10/True/SqlTable/dbo.Members.sql",
+              "ToolTip": "dbo.Members [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-03T14:00:07.159Z",
               "EditorCaption": ""
             }
           ]
