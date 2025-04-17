@@ -61,6 +61,7 @@ This design ensures that each part of the application has a clear responsibility
 ## Collaboration Details
 
 Our team collaborated extensively on designing the data models and populating the database. Following this, Himani and I divided responsibilities, each taking charge of three entities for controllers, services, interfaces, page controllers, and views. This structured approach enabled us to efficiently develop and integrate various components while ensuring consistency and maintainability across the project.
+For extra features: Himani did images for ingredients in which member can upload an image, edit image, view image in List, Details and Delete confirmation pages. I did pagination for all six entities with page size set at 5 by default.
 
 ## Contact
 
