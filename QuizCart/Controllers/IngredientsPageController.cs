@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using QuizCart.Interfaces;
 using QuizCart.Models;
 using QuizCart.Models.ViewModels;
+using System.Drawing.Printing;
 
 namespace QuizCart.Controllers
 {
@@ -33,13 +34,14 @@ namespace QuizCart.Controllers
         /// <returns>View with list of ingredients.</returns>
         /// <example>GET: IngredientsPage/List</example>
 
-
         [HttpGet("List")]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
         {
-            var ingredients = await _ingredientService.ListIngredients();
-            return View(ingredients);
+            var paginatedResult = await _ingredientService.GetPaginatedIngredients(page, pageSize);
+            return View(paginatedResult);
         }
+
+
 
         /// <summary>
         /// Displays the details of a specific ingredient by ID.
@@ -66,11 +68,11 @@ namespace QuizCart.Controllers
         /// <example>GET: IngredientsPage/AddIngredient</example>
 
 
-        [HttpGet("AddIngredient")]
-        public IActionResult Add()
-        {
-            return View();
-        }
+        //[HttpGet("AddIngredient")]
+        //public IActionResult Add()
+        //{
+        //    return View();
+        //}
 
         /// <summary>
         /// Processes the form submission to add a new ingredient.
@@ -80,9 +82,83 @@ namespace QuizCart.Controllers
         /// <example>POST: IngredientsPage/AddIngredient</example>
 
 
+        //[HttpPost("AddIngredient")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Add(AddIngredientDto dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return View(dto);
+
+        //    var result = await _ingredientService.AddIngredient(dto);
+        //    if (result.Status == ServiceResponse.ServiceStatus.Error)
+        //        return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+        //    return RedirectToAction("List");
+        //}
+
+        /// <summary>
+        /// Displays the form to edit an existing ingredient.
+        /// </summary>
+        /// <param name="id">ID of the ingredient to edit.</param>
+        /// <returns>View with pre-filled data or error view if not found.</returns>
+        /// <example>GET: IngredientsPage/EditIngredient/3</example>
+
+
+        //[HttpGet("EditIngredient/{id}")]
+        //[Authorize]
+        //public async Task<IActionResult> Edit(int id)
+        //{
+        //    var ingredient = await _ingredientService.FindIngredient(id);
+        //    if (ingredient == null)
+        //        return View("Error", new ErrorViewModel { Errors = ["Ingredient not found."] });
+
+        //    var dto = new UpdateIngredientDto
+        //    {
+        //        IngredientId = ingredient.IngredientId,
+        //        Name = ingredient.Name,
+        //        Benefits = ingredient.Benefits,
+        //        UnitPrice = ingredient.UnitPrice
+        //    };
+
+        //    return View(dto);
+        //}
+
+        /// <summary>
+        /// Submits the form to update an existing ingredient.
+        /// </summary>
+        /// <param name="id">ID of the ingredient.</param>
+        /// <param name="dto">Updated ingredient information.</param>
+        /// <returns>Redirect to details if successful, else error view.</returns>
+        /// <example>POST: IngredientsPage/EditIngredient/3</example>
+
+
+        //[HttpPost("EditIngredient/{id}")]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, UpdateIngredientDto dto)
+        //{
+        //    if (id != dto.IngredientId)
+        //        return View("Error", new ErrorViewModel { Errors = ["Ingredient ID mismatch."] });
+
+        //    var result = await _ingredientService.UpdateIngredient(id, dto);
+        //    if (result.Status == ServiceResponse.ServiceStatus.Error)
+        //        return View("Error", new ErrorViewModel { Errors = result.Messages });
+
+        //    return RedirectToAction("Details", new { id });
+        //}
+
+        [HttpGet("AddIngredient")]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Processes the form submission to add a new ingredient.
+        /// </summary>
         [HttpPost("AddIngredient")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(AddIngredientDto dto)
+        public async Task<IActionResult> Add([FromForm] AddIngredientDto dto)
         {
             if (!ModelState.IsValid)
                 return View(dto);
@@ -94,14 +170,10 @@ namespace QuizCart.Controllers
             return RedirectToAction("List");
         }
 
+
         /// <summary>
         /// Displays the form to edit an existing ingredient.
         /// </summary>
-        /// <param name="id">ID of the ingredient to edit.</param>
-        /// <returns>View with pre-filled data or error view if not found.</returns>
-        /// <example>GET: IngredientsPage/EditIngredient/3</example>
-
-
         [HttpGet("EditIngredient/{id}")]
         [Authorize]
         public async Task<IActionResult> Edit(int id)
@@ -109,6 +181,8 @@ namespace QuizCart.Controllers
             var ingredient = await _ingredientService.FindIngredient(id);
             if (ingredient == null)
                 return View("Error", new ErrorViewModel { Errors = ["Ingredient not found."] });
+
+            ViewBag.ImagePath = ingredient.ImagePath; // pass image path to the view
 
             var dto = new UpdateIngredientDto
             {
@@ -121,19 +195,14 @@ namespace QuizCart.Controllers
             return View(dto);
         }
 
+
         /// <summary>
         /// Submits the form to update an existing ingredient.
         /// </summary>
-        /// <param name="id">ID of the ingredient.</param>
-        /// <param name="dto">Updated ingredient information.</param>
-        /// <returns>Redirect to details if successful, else error view.</returns>
-        /// <example>POST: IngredientsPage/EditIngredient/3</example>
-
-
         [HttpPost("EditIngredient/{id}")]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, UpdateIngredientDto dto)
+        public async Task<IActionResult> Edit(int id, [FromForm] UpdateIngredientDto dto)
         {
             if (id != dto.IngredientId)
                 return View("Error", new ErrorViewModel { Errors = ["Ingredient ID mismatch."] });
@@ -145,12 +214,46 @@ namespace QuizCart.Controllers
             return RedirectToAction("Details", new { id });
         }
 
+
+
         /// <summary>
         /// Displays the confirmation page before deleting an ingredient.
         /// </summary>
         /// <param name="id">ID of the ingredient to delete.</param>
         /// <returns>Confirmation view or error if not found.</returns>
         /// <example>GET: IngredientsPage/DeleteIngredient/4</example>
+
+
+        //[HttpGet("DeleteIngredient/{id}")]
+        //[Authorize]
+        //public async Task<IActionResult> ConfirmDelete(int id)
+        //{
+        //    var ingredient = await _ingredientService.FindIngredient(id);
+        //    if (ingredient == null)
+        //        return View("Error", new ErrorViewModel { Errors = ["Ingredient not found."] });
+
+        //    return View(ingredient);
+        //}
+
+        /// <summary>
+        /// Deletes the ingredient after confirmation.
+        /// </summary>
+        /// <param name="id">ID of the ingredient to delete.</param>
+        /// <returns>Redirects to list or displays error.</returns>
+        /// <example>POST: IngredientsPage/DeleteIngredient/4</example>
+
+
+        //[HttpPost("DeleteIngredient/{id}")]
+        //[Authorize]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    var result = await _ingredientService.DeleteIngredient(id);
+        //    if (result.Status == ServiceResponse.ServiceStatus.Deleted)
+        //        return RedirectToAction("List");
+
+        //    return View("Error", new ErrorViewModel { Errors = result.Messages });
+        //}
 
 
         [HttpGet("DeleteIngredient/{id}")]
@@ -161,17 +264,13 @@ namespace QuizCart.Controllers
             if (ingredient == null)
                 return View("Error", new ErrorViewModel { Errors = ["Ingredient not found."] });
 
+            ViewBag.ImagePath = ingredient.ImagePath; // pass to view for preview
             return View(ingredient);
         }
 
         /// <summary>
         /// Deletes the ingredient after confirmation.
         /// </summary>
-        /// <param name="id">ID of the ingredient to delete.</param>
-        /// <returns>Redirects to list or displays error.</returns>
-        /// <example>POST: IngredientsPage/DeleteIngredient/4</example>
-
-
         [HttpPost("DeleteIngredient/{id}")]
         [Authorize]
         [ValidateAntiForgeryToken]
@@ -183,5 +282,6 @@ namespace QuizCart.Controllers
 
             return View("Error", new ErrorViewModel { Errors = result.Messages });
         }
+
     }
 }

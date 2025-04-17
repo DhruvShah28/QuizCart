@@ -39,13 +39,13 @@ namespace QuizCart.Controllers
         /// </summary>
         /// <returns>A view containing a list of subjects.</returns>
 
-
         [HttpGet("List")]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
         {
-            var subjects = await _subjectService.ListSubjects();
-            return View(subjects);
+            var result = await _subjectService.GetPaginatedSubjects(page, pageSize);
+            return View(result);
         }
+
 
         /// <summary>
         /// Displays details of a specific subject and its associated assessments.

@@ -2,6 +2,7 @@
 using QuizCart.Data;
 using QuizCart.Interfaces;
 using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Services
 {
@@ -315,5 +316,46 @@ namespace QuizCart.Services
             response.Status = ServiceResponse.ServiceStatus.Updated;
             return response;
         }
+
+
+        public async Task<PaginatedResult<MemberDto>> GetPaginatedMembers(int page, int pageSize)
+        {
+            var query = _context.Members
+                .Include(m => m.Subjects)
+                .Include(m => m.Purchases)
+                    .ThenInclude(p => p.BrainFoods)
+                        .ThenInclude(bf => bf.Ingredient)
+                .Include(m => m.Subjects!)
+                    .ThenInclude(s => s.Assessments)
+                .AsQueryable();
+
+            var totalCount = await query.CountAsync();
+
+            var members = await query
+                .OrderBy(m => m.Name)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var items = members.Select(m => new MemberDto
+            {
+                MemberId = m.MemberId,
+                Name = m.Name,
+                Email = m.Email,
+                TotalSubjects = m.Subjects?.Count ?? 0,
+                TotalAssessments = m.Subjects?.SelectMany(s => s.Assessments).Count() ?? 0,
+                AmountPaid = 0, // You can populate this if needed
+                AmountOwed = m.Purchases.Sum(p => p.BrainFoods.Sum(bf => bf.Quantity * bf.Ingredient.UnitPrice))
+            }).ToList();
+
+            return new PaginatedResult<MemberDto>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            };
+        }
+
     }
 }

@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\controllers\\subjectspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\controllers\\subjectspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\controllers\\purchasespagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\controllers\\purchasespagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\controllers\\memberspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\controllers\\memberspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\controllers\\brainfoodspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\controllers\\brainfoodspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|c:\\users\\himan\\onedrive\\documents\\humber web dev program\\quizcart\\quizcart\\controllers\\assessmentspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{153CC814-78E8-4831-AD06-68016E1D422F}|QuizCart\\QuizCart.csproj|solutionrelative:quizcart\\controllers\\assessmentspagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +30,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SubjectsPageController.cs",
+              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\SubjectsPageController.cs",
+              "RelativeDocumentMoniker": "QuizCart\\Controllers\\SubjectsPageController.cs",
+              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\SubjectsPageController.cs*",
+              "RelativeToolTip": "QuizCart\\Controllers\\SubjectsPageController.cs*",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwCoAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T04:59:20.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PurchasesPageController.cs",
+              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\PurchasesPageController.cs",
+              "RelativeDocumentMoniker": "QuizCart\\Controllers\\PurchasesPageController.cs",
+              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\PurchasesPageController.cs*",
+              "RelativeToolTip": "QuizCart\\Controllers\\PurchasesPageController.cs*",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwC8AAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T04:59:13.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MembersPageController.cs",
+              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\MembersPageController.cs",
+              "RelativeDocumentMoniker": "QuizCart\\Controllers\\MembersPageController.cs",
+              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\MembersPageController.cs*",
+              "RelativeToolTip": "QuizCart\\Controllers\\MembersPageController.cs*",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwDIAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T04:59:05.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BrainFoodsPageController.cs",
+              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\BrainFoodsPageController.cs",
+              "RelativeDocumentMoniker": "QuizCart\\Controllers\\BrainFoodsPageController.cs",
+              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\BrainFoodsPageController.cs*",
+              "RelativeToolTip": "QuizCart\\Controllers\\BrainFoodsPageController.cs*",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCUAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T04:58:56.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AssessmentsPageController.cs",
+              "DocumentMoniker": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\AssessmentsPageController.cs",
+              "RelativeDocumentMoniker": "QuizCart\\Controllers\\AssessmentsPageController.cs",
+              "ToolTip": "C:\\Users\\himan\\OneDrive\\Documents\\Humber Web Dev Program\\QuizCart\\QuizCart\\Controllers\\AssessmentsPageController.cs*",
+              "RelativeToolTip": "QuizCart\\Controllers\\AssessmentsPageController.cs*",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwCcAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T04:58:47.369Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"

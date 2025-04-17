@@ -2,6 +2,7 @@
 using QuizCart.Data;
 using QuizCart.Interfaces;
 using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Services
 {
@@ -200,6 +201,40 @@ namespace QuizCart.Services
                 TotalAssessments = s.Assessments.Count,
                 TotalMembers = s.Members?.Count ?? 0
             }).ToList();
+        }
+
+
+        public async Task<PaginatedResult<SubjectDto>> GetPaginatedSubjects(int page, int pageSize)
+        {
+            var query = _context.Subjects
+                .Include(s => s.Members)
+                .Include(s => s.Assessments)
+                .AsQueryable();
+
+            var totalCount = await query.CountAsync();
+
+            var subjects = await query
+                .OrderBy(s => s.Name)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var items = subjects.Select(s => new SubjectDto
+            {
+                SubjectId = s.SubjectId,
+                Name = s.Name,
+                Description = s.Description,
+                TotalMembers = s.Members?.Count ?? 0,
+                TotalAssessments = s.Assessments?.Count ?? 0
+            }).ToList();
+
+            return new PaginatedResult<SubjectDto>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            };
         }
 
 

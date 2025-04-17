@@ -1,4 +1,5 @@
-﻿@model IEnumerable<QuizCart.Models.AssessmentDto>
+﻿@model QuizCart.Models.ViewModels.PaginatedResult<QuizCart.Models.AssessmentDto>
+
 @{
     ViewData["Title"] = "Assessments";
 }
@@ -25,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var a in Model)
+            @foreach (var a in Model.Items)
             {
                 <tr>
                     <td>@a.AssessmentId</td>
@@ -35,7 +36,7 @@
                     <td>@a.SubjectName</td>
                     <td>@string.Join(", ", a.MemberNames)</td>
                     <td class="text-center">
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@a.AssessmentId">View Details</a>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@a.AssessmentId">View</a>
                     </td>
                     <td class="text-center">
                         <a class="btn btn-warning" asp-action="Edit" asp-route-id="@a.AssessmentId">Edit</a>
@@ -47,6 +48,21 @@
             }
         </tbody>
     </table>
+
+    <!-- ✅ Pagination Controls -->
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Page ? "active" : "")">
+                        <a class="page-link" asp-action="List" asp-route-page="@i" asp-route-pageSize="@Model.PageSize">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
 </div>
 
 <style>
@@ -70,10 +86,10 @@
         font-size: 1rem;
     }
 
-    .table th, .table td {
-        text-align: center;
-        vertical-align: middle;
-    }
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
 
     .thead-dark th {
         background-color: #343a40;
@@ -89,10 +105,10 @@
         border: none;
     }
 
-    .btn-primary:hover {
-        background-color: #FC9601;
-        border: none;
-    }
+        .btn-primary:hover {
+            background-color: #FC9601;
+            border: none;
+        }
 
     .btn-info {
         background-color: #17a2b8;
@@ -107,5 +123,11 @@
     .btn-danger {
         background-color: #dc3545;
         border-color: #dc3545;
+    }
+
+    .pagination .active .page-link {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: white;
     }
 </style>

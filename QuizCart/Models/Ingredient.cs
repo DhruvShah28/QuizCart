@@ -14,6 +14,9 @@ namespace QuizCart.Models
 
         public float UnitPrice { get; set; }
 
+        public string? ImagePath { get; set; }
+
+
         // one ingredient can be in multiple brainfoods
         public ICollection<BrainFood>? BrainFoods { get; set; }
 
@@ -34,6 +37,7 @@ namespace QuizCart.Models
 
         public List<BrainFoodDto> AssessmentsUsedIn { get; set; } = new();
 
+        public string? ImagePath { get; set; }
 
     }
 
@@ -50,7 +54,9 @@ namespace QuizCart.Models
     public string Benefits { get; set; } = string.Empty;
 
     public float UnitPrice { get; set; }
-}
+
+    public IFormFile? ImageFile { get; set; } 
+    }
 
 public class AddIngredientDto
 {
@@ -62,7 +68,9 @@ public class AddIngredientDto
     public string Benefits { get; set; } = string.Empty;
 
     public float UnitPrice { get; set; }
-}
+
+    public IFormFile? ImageFile { get; set; }
+    }
 
 
 

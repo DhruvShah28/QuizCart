@@ -8,7 +8,8 @@
     <div class="form-container">
         <h2 class="text-center">Edit Ingredient</h2>
 
-        <form asp-action="Edit" method="post">
+        <!-- Add enctype for file upload -->
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
             <input type="hidden" asp-for="IngredientId" />
 
@@ -28,6 +29,21 @@
                 <label asp-for="UnitPrice" class="control-label"></label>
                 <input asp-for="UnitPrice" class="form-control" />
                 <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+
+            <!-- Preview current image (optional) -->
+            @if (ViewBag.ImagePath != null)
+            {
+                <div class="form-group text-center">
+                    <p><strong>Current Image:</strong></p>
+                    <img src="@ViewBag.ImagePath" alt="Ingredient Image" style="max-height: 150px;" class="img-thumbnail" />
+                </div>
+            }
+
+            <!-- Upload new image -->
+            <div class="form-group">
+                <label for="ImageFile" class="control-label">Upload New Image (optional)</label>
+                <input type="file" name="ImageFile" class="form-control" accept="image/*" />
             </div>
 
             <div class="button-group">
@@ -58,10 +74,10 @@
         margin-bottom: 15px;
     }
 
-    .form-group label {
-        font-weight: 600;
-        font-size: 0.95rem;
-    }
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
 
     .form-control {
         width: 100%;
@@ -69,6 +85,15 @@
         font-size: 0.95rem;
         border: 1px solid #ccc;
         border-radius: 5px;
+    }
+
+    .img-thumbnail {
+        margin-top: 10px;
+        max-width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #fff;
     }
 
     .button-group {
@@ -90,9 +115,9 @@
         color: white;
     }
 
-    .btn-primary:hover {
-        background-color: #0056b3;
-    }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
 
     .btn-secondary {
         background-color: #6c757d;
@@ -100,9 +125,9 @@
         color: white;
     }
 
-    .btn-secondary:hover {
-        background-color: #545b62;
-    }
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
 
     .text-danger {
         font-size: 0.85rem;

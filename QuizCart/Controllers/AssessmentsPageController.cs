@@ -37,11 +37,12 @@ namespace QuizCart.Controllers
 
 
         [HttpGet("List")]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
         {
-            var assessments = await _assessmentService.ListAssessments();
-            return View(assessments);
+            var result = await _assessmentService.GetPaginatedAssessments(page, pageSize);
+            return View(result);
         }
+
 
         /// <summary>
         /// Displays detailed information of a specific assessment.

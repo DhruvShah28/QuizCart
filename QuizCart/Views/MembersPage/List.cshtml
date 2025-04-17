@@ -1,4 +1,5 @@
-﻿@model IEnumerable<QuizCart.Models.MemberDto>
+﻿@model QuizCart.Models.ViewModels.PaginatedResult<QuizCart.Models.MemberDto>
+
 
 @{
     ViewData["Title"] = "Member List";
@@ -26,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var m in Model)
+            @foreach (var m in Model.Items)
             {
                 <tr>
                     <td>@m.MemberId</td>
@@ -36,7 +37,7 @@
                     <td>@m.TotalSubjects</td>
                     <td>@m.TotalAssessments</td>
                     <td class="text-center">
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@m.MemberId">View Details</a>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@m.MemberId">View</a>
                     </td>
                     <td class="text-center">
                         <a class="btn btn-warning" asp-action="Edit" asp-route-id="@m.MemberId">Edit</a>
@@ -46,8 +47,24 @@
                     </td>
                 </tr>
             }
+
         </tbody>
     </table>
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Page ? "active" : "")">
+                        <a class="page-link" asp-action="List" asp-route-page="@i" asp-route-pageSize="@Model.PageSize">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
 </div>
 
 <style>

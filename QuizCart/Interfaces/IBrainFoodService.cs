@@ -1,4 +1,5 @@
 ﻿using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Interfaces
 {
@@ -9,5 +10,7 @@ namespace QuizCart.Interfaces
         Task<ServiceResponse> AddBrainFood(AddBrainFoodDto dto);
         Task<ServiceResponse> UpdateBrainFood(int id, UpdateBrainFoodDto dto);
         Task<ServiceResponse> DeleteBrainFood(int id);
+        Task<PaginatedResult<BrainFoodDto>> GetPaginatedBrainFoods(int page, int pageSize);
+
     }
 }

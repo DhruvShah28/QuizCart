@@ -7,7 +7,8 @@
     <div class="form-container">
         <h2 class="text-center">Add New Ingredient</h2>
 
-        <form asp-action="Add" method="post">
+        <!-- Add enctype for file upload -->
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
 
             <div class="form-group">
@@ -26,6 +27,12 @@
                 <label asp-for="UnitPrice" class="control-label"></label>
                 <input asp-for="UnitPrice" class="form-control" placeholder="Enter unit price" />
                 <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+
+            <!-- NEW: Image upload field -->
+            <div class="form-group">
+                <label for="ImageFile" class="control-label">Upload Image (optional)</label>
+                <input type="file" name="ImageFile" class="form-control" accept="image/*" />
             </div>
 
             <div class="button-group">
@@ -108,5 +115,5 @@
 </style>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+        <partial name="_ValidationScriptsPartial" />
 }

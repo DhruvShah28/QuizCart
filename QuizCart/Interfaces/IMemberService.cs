@@ -1,4 +1,5 @@
 ﻿using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Interfaces
 {
@@ -16,5 +17,7 @@ namespace QuizCart.Interfaces
 
         Task<ServiceResponse> LinkSubject(LinkSubjectDto dto);
         Task<ServiceResponse> UnlinkSubject(LinkSubjectDto dto);
+
+        Task<PaginatedResult<MemberDto>> GetPaginatedMembers(int page, int pageSize);
     }
 }

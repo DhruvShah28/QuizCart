@@ -1,4 +1,5 @@
 ﻿using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Interfaces
 {
@@ -10,5 +11,7 @@ namespace QuizCart.Interfaces
         Task<ServiceResponse> UpdateAssessment(int id, UpdateAssessmentDto updateDto);
         Task<ServiceResponse> DeleteAssessment(int id);
         Task<IEnumerable<AssessmentDto>> ListAssessmentsBySubjectId(int subjectId);
+        Task<PaginatedResult<AssessmentDto>> GetPaginatedAssessments(int page, int pageSize);
+
     }
 }

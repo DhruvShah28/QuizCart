@@ -1,4 +1,5 @@
 ﻿using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Interfaces
 {
@@ -16,6 +17,7 @@ namespace QuizCart.Interfaces
         Task<ServiceResponse> AddPurchaseWithBrainFood(AddPurchasesDto dto, BrainFood brainFood);
         Task<Purchase?> FindPurchaseForEdit(int id);
 
+        Task<PaginatedResult<PurchasesDto>> GetPaginatedPurchases(int page, int pageSize);
 
 
     }

@@ -2,6 +2,7 @@
 using QuizCart.Data;
 using QuizCart.Interfaces;
 using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Services
 {
@@ -278,6 +279,57 @@ namespace QuizCart.Services
             }).ToList();
         }
 
+        public async Task<PaginatedResult<AssessmentDto>> GetPaginatedAssessments(int page, int pageSize)
+        {
+            var query = _context.Assessments
+                .Include(a => a.Subject)
+                .Include(a => a.BrainFoods!)
+                    .ThenInclude(bf => bf.Ingredient)
+                .Include(a => a.BrainFoods!)
+                    .ThenInclude(bf => bf.Purchases!)
+                        .ThenInclude(p => p.Member)
+                .AsQueryable();
+
+            var totalCount = await query.CountAsync();
+
+            var assessments = await query
+                .OrderBy(a => a.DateOfAssessment)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var items = assessments.Select(a => new AssessmentDto
+            {
+                AssessmentId = a.AssessmentId,
+                Title = a.Title,
+                Description = a.Description,
+                DateOfAssessment = a.DateOfAssessment,
+                DifficultyLevel = a.DifficultyLevel,
+                SubjectName = a.Subject?.Name ?? "Unknown",
+                MemberNames = a.Subject?.Members?.Select(m => m.Name).ToList() ?? new List<string>(),
+                BrainFoods = a.BrainFoods?.Select(bf => new BrainFoodDto
+                {
+                    BrainFoodId = bf.BrainFoodId,
+                    IngredientName = bf.Ingredient?.Name ?? "Unknown",
+                    Quantity = bf.Quantity,
+                    UnitPrice = bf.Ingredient?.UnitPrice ?? 0,
+                    Benefits = bf.Ingredient?.Benefits ?? "",
+                    Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                    {
+                        MemberName = p.Member?.Name ?? "Unknown",
+                        DatePurchased = p.DatePurchased
+                    }).ToList() ?? new()
+                }).ToList() ?? new()
+            }).ToList();
+
+            return new PaginatedResult<AssessmentDto>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            };
+        }
 
 
     }

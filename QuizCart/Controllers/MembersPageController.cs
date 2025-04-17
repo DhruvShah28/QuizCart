@@ -47,12 +47,13 @@ namespace QuizCart.Controllers
 
 
         // GET: MembersPage/ListMembers
-        [HttpGet("ListMembers")]
-        public async Task<IActionResult> List()
+        [HttpGet("List")]
+        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
         {
-            IEnumerable<MemberDto> members = await _memberService.ListMembers();
-            return View(members);
+            var result = await _memberService.GetPaginatedMembers(page, pageSize);
+            return View(result);
         }
+
 
         /// <summary>
         /// Displays details of a specific member including linked subjects and purchases.

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QuizCart.Models.SubjectDto>
+﻿@model PaginatedResult<QuizCart.Models.SubjectDto>
 
 @{
     ViewData["Title"] = "Subjects";
@@ -7,7 +7,7 @@
 <h1 class="text-center my-4">@ViewData["Title"]</h1>
 
 <div class="mb-4">
-    <a asp-action="Add" class="btn btn-primary btn-lg">Add Subject</a>
+    <a asp-action="Add" class="btn btn-primary btn-lg">Add New Subject</a>
 </div>
 
 <div>
@@ -17,92 +17,50 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Total Assessments</th>
                 <th>Total Members</th>
+                <th>Total Assessments</th>
                 <th colspan="3" class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var subject in Model)
+            @foreach (var s in Model.Items)
             {
                 <tr>
-                    <td>@subject.SubjectId</td>
-                    <td>@subject.Name</td>
-                    <td>@subject.Description</td>
-                    <td>@subject.TotalAssessments</td>
-                    <td>@subject.TotalMembers</td>
+                    <td>@s.SubjectId</td>
+                    <td>@s.Name</td>
+                    <td>@s.Description</td>
+                    <td>@s.TotalMembers</td>
+                    <td>@s.TotalAssessments</td>
                     <td class="text-center">
-                        <a asp-action="Details" asp-route-id="@subject.SubjectId" class="btn btn-info">View Details</a>
+                        <a asp-action="Details" asp-route-id="@s.SubjectId" class="btn btn-info">View</a>
                     </td>
                     <td class="text-center">
-                        <a asp-action="Edit" asp-route-id="@subject.SubjectId" class="btn btn-warning">Edit</a>
+                        <a asp-action="Edit" asp-route-id="@s.SubjectId" class="btn btn-warning">Edit</a>
                     </td>
                     <td class="text-center">
-                        <a asp-action="ConfirmDelete" asp-route-id="@subject.SubjectId" class="btn btn-danger">Delete</a>
+                        <a asp-action="ConfirmDelete" asp-route-id="@s.SubjectId" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Page ? "active" : "")">
+                        <a class="page-link"
+                           asp-action="List"
+                           asp-route-page="@i"
+                           asp-route-pageSize="@Model.PageSize">
+                            @i
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
 </div>
-
-<style>
-    h1 {
-        font-size: 2rem;
-        color: #343a40;
-        font-weight: bold;
-    }
-
-    .btn {
-        font-size: 1rem;
-        padding: 10px 20px;
-        margin: 5px;
-    }
-
-    .btn-lg {
-        padding: 12px 24px;
-    }
-
-    .table {
-        font-size: 1rem;
-    }
-
-    .table th, .table td {
-        text-align: center;
-        vertical-align: middle;
-    }
-
-    .thead-dark th {
-        background-color: #343a40;
-        color: #fff;
-    }
-
-    .table-striped tbody tr:nth-of-type(odd) {
-        background-color: #f9f9f9;
-    }
-
-    .btn-primary {
-        background-color: #ee8822;
-        border: none;
-    }
-
-    .btn-primary:hover {
-        background-color: #FC9601;
-        border: none;
-    }
-
-    .btn-info {
-        background-color: #17a2b8;
-        border-color: #17a2b8;
-    }
-
-    .btn-warning {
-        background-color: #ffc107;
-        border-color: #ffc107;
-    }
-
-    .btn-danger {
-        background-color: #dc3545;
-        border-color: #dc3545;
-    }
-</style>

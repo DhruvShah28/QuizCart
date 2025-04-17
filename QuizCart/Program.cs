@@ -49,7 +49,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
-
+app.UseStaticFiles(); // Enables /wwwroot/images/ingredients access
 // Middleware
 if (app.Environment.IsDevelopment())
 {
@@ -70,7 +70,6 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthorization();
@@ -80,5 +79,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.MapRazorPages();
+
+
+
 
 app.Run();

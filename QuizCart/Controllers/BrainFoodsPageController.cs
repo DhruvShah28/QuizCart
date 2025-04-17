@@ -35,11 +35,12 @@ namespace QuizCart.Controllers
         /// <example>GET: BrainFoodsPage/List</example>
 
         [HttpGet("List")]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
         {
-            var brainFoods = await _brainFoodService.ListBrainFoods();
-            return View(brainFoods);
+            var result = await _brainFoodService.GetPaginatedBrainFoods(page, pageSize);
+            return View(result);
         }
+
 
         /// <summary>
         /// Displays details of a specific brain food item.

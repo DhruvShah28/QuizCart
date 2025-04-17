@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QuizCart.Models.PurchasesDto>
+﻿@model PaginatedResult<QuizCart.Models.PurchasesDto>
 
 @{
     ViewData["Title"] = "Purchases List";
@@ -24,26 +24,46 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var purchase in Model)
+            @foreach (var p in Model.Items)
             {
                 <tr>
-                    <td>@purchase.PurchaseId</td>
-                    <td>@purchase.DatePurchased</td>
-                    <td>@purchase.MemberName</td>
-                    <td>@purchase.TotalAmount.ToString("C2")</td>
+                    <td>@p.PurchaseId</td>
+                    <td>@p.MemberName</td>
+                    <td>@p.DatePurchased.ToString("yyyy-MM-dd")</td>
+                    <td>@p.TotalAmount.ToString("C2")</td>
+                    <td>@string.Join(", ", p.IngredientNames)</td>
                     <td class="text-center">
-                        <a class="btn btn-info" asp-action="Details" asp-route-id="@purchase.PurchaseId">View Details</a>
+                        <a asp-action="Details" asp-route-id="@p.PurchaseId" class="btn btn-info">View</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@purchase.PurchaseId">Edit</a>
+                        <a asp-action="Edit" asp-route-id="@p.PurchaseId" class="btn btn-warning">Edit</a>
                     </td>
                     <td class="text-center">
-                        <a class="btn btn-danger" asp-action="ConfirmDelete" asp-route-id="@purchase.PurchaseId">Delete</a>
+                        <a asp-action="ConfirmDelete" asp-route-id="@p.PurchaseId" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
             }
+
         </tbody>
     </table>
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Pagination">
+            <ul class="pagination justify-content-center">
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.Page ? "active" : "")">
+                        <a class="page-link"
+                           asp-action="List"
+                           asp-route-page="@i"
+                           asp-route-pageSize="@Model.PageSize">@i</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+
 </div>
 
 <style>

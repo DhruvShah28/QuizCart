@@ -131,8 +131,23 @@ namespace QuizCart.Controllers
         /// </example>
 
 
+        //[HttpPost("Add")]
+        //public async Task<IActionResult> AddIngredient(AddIngredientDto dto)
+        //{
+        //    var response = await _ingredientService.AddIngredient(dto);
+
+        //    if (response.Status == ServiceResponse.ServiceStatus.Error)
+        //        return StatusCode(500, new { error = "Error adding ingredient." });
+
+        //    return CreatedAtAction(nameof(FindIngredient), new { id = response.CreatedId }, new
+        //    {
+        //        message = $"Ingredient added successfully with ID {response.CreatedId}",
+        //        ingredientId = response.CreatedId
+        //    });
+        //}
+
         [HttpPost("Add")]
-        public async Task<IActionResult> AddIngredient(AddIngredientDto dto)
+        public async Task<IActionResult> AddIngredient([FromForm] AddIngredientDto dto)
         {
             var response = await _ingredientService.AddIngredient(dto);
 
@@ -145,6 +160,7 @@ namespace QuizCart.Controllers
                 ingredientId = response.CreatedId
             });
         }
+
 
         /// <summary>
         /// Updates an existing ingredient.
@@ -166,8 +182,26 @@ namespace QuizCart.Controllers
         /// </example>
 
 
+        //[HttpPut("Update/{id}")]
+        //public async Task<IActionResult> UpdateIngredient(int id, UpdateIngredientDto dto)
+        //{
+        //    if (id != dto.IngredientId)
+        //        return BadRequest(new { message = "Ingredient ID mismatch." });
+
+        //    var response = await _ingredientService.UpdateIngredient(id, dto);
+
+        //    if (response.Status == ServiceResponse.ServiceStatus.NotFound)
+        //        return NotFound(new { error = "Ingredient not found." });
+
+        //    if (response.Status == ServiceResponse.ServiceStatus.Error)
+        //        return StatusCode(500, new { error = "Unexpected error updating ingredient." });
+
+        //    return Ok(new { message = $"Ingredient with ID {id} updated successfully." });
+        //}
+
+
         [HttpPut("Update/{id}")]
-        public async Task<IActionResult> UpdateIngredient(int id, UpdateIngredientDto dto)
+        public async Task<IActionResult> UpdateIngredient(int id, [FromForm] UpdateIngredientDto dto)
         {
             if (id != dto.IngredientId)
                 return BadRequest(new { message = "Ingredient ID mismatch." });
@@ -182,6 +216,7 @@ namespace QuizCart.Controllers
 
             return Ok(new { message = $"Ingredient with ID {id} updated successfully." });
         }
+
 
         /// <summary>
         /// Deletes an ingredient by ID.

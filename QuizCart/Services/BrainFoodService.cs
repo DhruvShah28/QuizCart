@@ -2,6 +2,7 @@
 using QuizCart.Data;
 using QuizCart.Interfaces;
 using QuizCart.Models;
+using QuizCart.Models.ViewModels;
 
 namespace QuizCart.Services
 {
@@ -204,5 +205,50 @@ namespace QuizCart.Services
 
             return response;
         }
+
+
+        public async Task<PaginatedResult<BrainFoodDto>> GetPaginatedBrainFoods(int page, int pageSize)
+        {
+            var query = _context.BrainFoods
+                .Include(bf => bf.Assessment)
+                .Include(bf => bf.Ingredient)
+                .Include(bf => bf.Purchases)
+                    .ThenInclude(p => p.Member)
+                .AsQueryable();
+
+            var totalCount = await query.CountAsync();
+
+            var brainFoods = await query
+                .OrderBy(bf => bf.BrainFoodId)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var items = brainFoods.Select(bf => new BrainFoodDto
+            {
+                BrainFoodId = bf.BrainFoodId,
+                Quantity = bf.Quantity,
+                IngredientId = bf.IngredientId,
+                IngredientName = bf.Ingredient?.Name ?? "Unknown",
+                AssessmentId = bf.AssessmentId,
+                AssessmentName = bf.Assessment?.Title ?? "Unknown",
+                Benefits = bf.Ingredient?.Benefits ?? "",
+                UnitPrice = bf.Ingredient?.UnitPrice ?? 0f,
+                Purchases = bf.Purchases?.Select(p => new BrainFoodPurchaseDto
+                {
+                    MemberName = p.Member?.Name ?? "Unknown",
+                    DatePurchased = p.DatePurchased
+                }).ToList() ?? new()
+            }).ToList();
+
+            return new PaginatedResult<BrainFoodDto>
+            {
+                Items = items,
+                TotalCount = totalCount,
+                Page = page,
+                PageSize = pageSize
+            };
+        }
+
     }
 }

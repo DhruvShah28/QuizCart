@@ -44,13 +44,13 @@ namespace QuizCart.Controllers
         /// </summary>
         /// <returns>View with list of purchases.</returns>
 
-
         [HttpGet("List")]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(int page = 1, int pageSize = 5)
         {
-            var purchases = await _purchaseService.ListPurchases();
-            return View(purchases);
+            var result = await _purchaseService.GetPaginatedPurchases(page, pageSize);
+            return View(result);
         }
+
 
         /// <summary>
         /// Shows details of a specific purchase.
